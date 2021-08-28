@@ -27,7 +27,8 @@ O sistema deve acrescentar rapidamente a nova conta adicionada.
 |1. O usuário visita o site e clica em "Seja um PetGramer!"||
 ||2. O sistema apresenta uma interface para capturar os dados da postagem.|
 |3. O usuário preenche o nome, email, senha, descrição e localização.||
-||4. O sistema grava esses dados acrescentando a nova conta.|
+|4. O usuário preenche o nome, categoria e descrição (opcional) do PET. É possível adicionar mais de um PET clicando no botão "+1" ||
+||5. O sistema grava esses dados acrescentando a nova conta.|
 
 
 #### 5.2. Fluxo de exceção 
