@@ -1,4 +1,7 @@
 # Rede Social - Petgram 1.0
+
+![Petgram](./images/logo.jpeg)
+
 O projeto __Petgram__ tem como objetivo ser uma rede social específica para donos de pets.
 
 Todo material está publicado sob licença [GPL-3.0](https://www.gnu.org/licenses/quick-guide-gplv3.pt-br.html).
