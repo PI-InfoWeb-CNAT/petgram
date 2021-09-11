@@ -36,6 +36,8 @@ Todo material está publicado sob licença [GPL-3.0](https://www.gnu.org/license
 
     11. [Ver perfil](./docs/casos_de_uso/ucd_view_profile.md)
 
+    12. [Gerenciar chat](./docs/casos_de_uso/ucd_manage_chat.md)
+
 
 * [Diagrama de casos de uso](./diagramas/Diagrama_casos_de_uso.png)
 

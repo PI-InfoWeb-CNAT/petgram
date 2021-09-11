@@ -8,6 +8,7 @@
 |:-------|:-------|:----------|:------|
 | 19/08/2021 |  **`1.01`** | Versão Inicial  | Kael Amir e Jéssica Dantas |
 | 28/08/2021 | **`1.02`** | Versão sem GPS | Ueniry Felipe e Kael Amir |
+| 11/09/2021 | **`1.02`** | Versão com Gerenciar Chats | Ueniry Felipe |
 
 ### 1. Objetivo do Projeto 
 
@@ -69,6 +70,7 @@ O sistema deve possuir uma logo marca que o identifique e que possa ser utilizad
 | RF06 | Enviar mensagens | O sistem deve permitir a comunicação entre os membros da rede, onde as mensagens devem ser enviadas e consultas no próprio sistema. |
 | RF07 | Marcar encontros | O sistema deve permitir o agendamento de encontros em locais abertos e que permitam pets, para que os usuários possam se encontrar e levar os pets. |
 | RF08 | Cancelar membro | Por questões de ordem éticas  um membro da rede pode ter seu perfil cancelado pelo administrador da rede.|
+| RF09 | Gerenciar chat | Deve ser permitido a conversa entre membros e moderadores. Essa funcionalidade permite visualizar mensagens e enviar mensagem|
 
 
 ### 9. Requisitos não-funcionais
