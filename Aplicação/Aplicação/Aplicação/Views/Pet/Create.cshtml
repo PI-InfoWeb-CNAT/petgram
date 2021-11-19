@@ -12,7 +12,7 @@
     <title>Create</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm("Create", "Pet", FormMethod.Post)) 
     {
         @Html.AntiForgeryToken()
         
@@ -43,8 +43,8 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @Html.Hidden("UserID", (int)ViewBag.UserID)
+        @ViewBag.UserID
+        @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
