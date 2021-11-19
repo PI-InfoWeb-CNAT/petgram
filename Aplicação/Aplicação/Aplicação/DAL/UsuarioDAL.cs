@@ -20,5 +20,12 @@ namespace Aplicação.DAL
 
             context.SaveChanges();
         }
+
+        public UsuarioCadastro GetUserByID(long id)
+        {
+            return context.Usuarios.Where(u => u.ID == id).Include("Pets").First();
+        }
+
+
     }
 }

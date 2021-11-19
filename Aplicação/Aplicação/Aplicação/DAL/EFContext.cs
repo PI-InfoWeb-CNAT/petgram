@@ -16,10 +16,12 @@ namespace Aplicação.DAL
         }
 
         public DbSet<UsuarioCadastro> Usuarios { get; set; }
+        public DbSet<Pet> Pets { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
     }
 }

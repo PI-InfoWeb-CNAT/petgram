@@ -35,5 +35,7 @@ namespace Aplicação.Models
         [DisplayName("Confirmar senha")]
         [DataType(DataType.Password)]
         public string ConfirmaSenha { get; set; }
+
+        public virtual ICollection<Pet> Pets { get; set; }
     }
 }
