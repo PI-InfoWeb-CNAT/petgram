@@ -18,7 +18,7 @@ namespace Aplicação.Controllers
                 if (ModelState.IsValid)
                 {
                     usuarioDAL.GravarUsuario(usuario);
-                    return RedirectToAction("../Pet/Create);
+                    return RedirectToAction("../Pet/Create", new { id = usuario.ID });
                 }
 
                 return View(usuario);
