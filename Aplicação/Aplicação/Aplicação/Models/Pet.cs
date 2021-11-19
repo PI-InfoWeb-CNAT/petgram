@@ -22,5 +22,6 @@ namespace Aplicação.Models
         public string Description { get; set; }
 
         public virtual UsuarioCadastro Owner { get; set; }
+        public int? UserID { get; set; }
     }
 }
