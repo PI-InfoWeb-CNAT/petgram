@@ -30,8 +30,9 @@ namespace Aplicação.Controllers
         }
 
         // GET: Pet
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewBag.UserID = id;
             return View();
         }
 
