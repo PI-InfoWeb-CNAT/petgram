@@ -17,9 +17,8 @@ namespace Aplicação.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    Console.WriteLine("deuboom");
                     petDAL.GravarPet(Pet);
-                    return RedirectToAction("Create");
+                    return RedirectToAction("../Cadastro/Create");
                 }
 
                 return View(Pet);

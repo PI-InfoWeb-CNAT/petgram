@@ -26,6 +26,12 @@ namespace Aplicação.DAL
             return context.Usuarios.Where(u => u.ID == id).Include("Pets").First();
         }
 
+        public UsuarioCadastro GetUserByEmail(string Email)
+        {
+            return context.Usuarios.Where(u => u.Email == Email).First();
+            //return context.Usuarios.Where(u => u.Email == Email).Include("Pets").First();
+        }
+
 
     }
 }
