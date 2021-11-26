@@ -12,6 +12,12 @@ namespace Aplicação.Controllers
     {
         UsuarioDAL usuarioDAL = new UsuarioDAL();
 
+        // GET: Cadastro
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Create(UsuarioCadastro usuario)
         {
@@ -20,21 +26,15 @@ namespace Aplicação.Controllers
                 if (ModelState.IsValid)
                 {
                     usuarioDAL.GravarUsuario(usuario);
-                    return RedirectToAction("../Pet/Create", new { id = usuario.ID });
+                    return RedirectToAction("../Pet/Create", new { UserID = usuario.ID });
                 }
 
                 return View(usuario);
-            } 
+            }
             catch
             {
                 return View(usuario);
             }
-        }
-
-        // GET: Cadastro
-        public ActionResult Create()
-        {
-            return View();
         }
 
     }
