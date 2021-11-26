@@ -10,6 +10,7 @@ namespace Aplicação.Controllers
 {
     public class LoginController : Controller
     {
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
         // GET: Login
         public ActionResult Index()
         {
@@ -21,17 +22,16 @@ namespace Aplicação.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                UsuarioCadastro userWithThatEmail = usuarioDAL.GetUserByEmail(usuario.Email);
+                if (usuario.Senha == userWithThatEmail.Senha)
                 {
-                    UsuarioCadastro userWithThatEmail = UsuarioDAL.GetUserByEmail(usuario.Email);
-                    return RedirectToAction("../Pet/Create", new { UserID = usuario.ID });
+                    return RedirectToAction("../LOGADO");
                 }
-
-                return View(usuario);
+                return RedirectToAction("../SENHA_ERRADA");
             }
             catch
             {
-                return View(usuario);
+                return RedirectToAction("../EMAIL_ERRADO/");
             }
         }
 
