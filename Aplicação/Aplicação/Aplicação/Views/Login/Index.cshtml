@@ -7,43 +7,49 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
+        <style>
+            body {
+                background-color: #EB7E2F;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h1>Login</h1>
-            <hr />
+            <h4 style="margin-top:10%; color:white;">Por gentileza, preencha os seus dados:</h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2" style="margin-top:1%">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2">
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senha" } })
                     @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Entrar" class="btn btn-default" />
+                <div style="text-align:center">
+                    <input type="submit" value="Entrar" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
                 </div>
             </div>
         </div>
-    }
+        }
 
-</body>
+    </body>
 </html>
