@@ -12,13 +12,21 @@ namespace Aplicação.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira um nome de usuário.")]
-        [DisplayName("Nome")]
+        [DisplayName("Usuário")]
         [MaxLength(50, ErrorMessage = "O nome de usuário é muito grande.")]
+        public string User { get; set; }
+
+        [Required(ErrorMessage = "Por favor, insira seu nome.")]
+        [DisplayName("Nome")]
+        [MaxLength(50, ErrorMessage = "O nome é muito grande.")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Por favor, insira sua idade.")]
-        [DisplayName("Idade")]
-        public int Idade { get; set; }
+        [Required(ErrorMessage = "Por favor, insira sua data de nascimento.")]
+        [DisplayName("Data de nascimento")]
+        public DateTime Data_Nascimento { get; set; }
+
+        [DisplayName("Descrição")]
+        public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira um endereço de email.")]
         [DisplayName("Email")]
