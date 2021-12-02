@@ -38,6 +38,10 @@ Todo material está publicado sob licença [GPL-3.0](https://www.gnu.org/license
 
     12. [Gerenciar chat](./docs/casos_de_uso/ucd_manage_chat.md)
 
+    13. [Logar na conta](./docs/casos_de_uso/ucd_login_account.md)
+    
+    14. [Criar PET](./docs/casos_de_uso/ucd_create_pet.md)
+
 
 * [Diagrama de casos de uso](./diagramas/Diagrama_casos_de_uso.png)
 
