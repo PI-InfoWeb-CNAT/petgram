@@ -24,12 +24,11 @@
             @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
-
-            @*@ViewBag.UserID*@
+            <h4 style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div class="col-md-offset-5 col-md-2" style="margin-top:10%">
+                <div class="col-md-offset-5 col-md-2">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
@@ -46,7 +45,7 @@
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-offset-5 col-md-2">
-                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale-nos um pouco sobre ele (opcional)" } })
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -55,7 +54,7 @@
 
             <div class="form-group">
                 <div style="text-align:center">
-                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594"/>
+                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
                 </div>
             </div>
 
