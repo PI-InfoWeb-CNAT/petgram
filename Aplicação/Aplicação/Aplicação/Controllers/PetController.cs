@@ -18,7 +18,8 @@ namespace Aplicação.Controllers
                 if (ModelState.IsValid)
                 {
                     petDAL.GravarPet(Pet);
-                    return RedirectToAction("../Cadastro/Create");
+                    ViewBag.new_pet = "true";
+                    return Redirect(Request.UrlReferrer.ToString());
                 }
 
                 return View(Pet);
@@ -41,6 +42,13 @@ namespace Aplicação.Controllers
         public ActionResult Create(Pet Pet)
         {
             return GravarPet(Pet);
+        }
+
+        // POST: Pet
+        [HttpPost]
+        public ActionResult Create2(Pet Pet)
+        {
+            return RedirectToAction("../Cadastro/Create");
         }
     }
 }
