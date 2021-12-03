@@ -18,8 +18,9 @@ namespace Aplicação.Controllers
                 if (ModelState.IsValid)
                 {
                     petDAL.GravarPet(Pet);
-                    ViewBag.new_pet = "true";
-                    return Redirect($"{Request.UrlReferrer.ToString()}&new_pet=True");
+                    ViewBag.new_pet = 134;
+                    //return Redirect($"{Request.UrlReferrer.ToString()}&new_pet=True");
+                    return RedirectToAction("../Pet/Create", new { UserID = Pet.UserID, new_pet = true });
                 }
 
                 return View(Pet);
@@ -31,8 +32,11 @@ namespace Aplicação.Controllers
         }
 
         // GET: Pet
-        public ActionResult Create(int UserID)
+        public ActionResult Create(int UserID, bool new_pet)
         {
+            if (new_pet)
+                ViewBag.new_pet = "Pet adicionado!";
+
             ViewBag.UserID = UserID;
             return View();
         }
