@@ -10,11 +10,11 @@
 
 ### 1. Resumo 
 
-Este casos de uso permite que os visitantes e membros da rede possam logar na sua conta.
+Este casos de uso permite que os visitantes da rede possam logar na sua conta.
 
 ### 2. Atores 
 
-Visitantes e membros da rede
+Visitantes da rede
 
 ### 3. Pós-condições
 

@@ -19,7 +19,7 @@ namespace Aplicação.Controllers
                 {
                     petDAL.GravarPet(Pet);
                     ViewBag.new_pet = "true";
-                    return Redirect(Request.UrlReferrer.ToString());
+                    return Redirect($"{Request.UrlReferrer.ToString()}&new_pet=True");
                 }
 
                 return View(Pet);
