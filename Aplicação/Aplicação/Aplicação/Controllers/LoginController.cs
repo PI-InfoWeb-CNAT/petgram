@@ -25,7 +25,7 @@ namespace Aplicação.Controllers
                 UsuarioCadastro userWithThatEmail = usuarioDAL.GetUserByEmail(usuario.Email);
                 if (usuario.Senha == userWithThatEmail.Senha)
                 {
-                    return RedirectToAction("../LOGADO");
+                    return RedirectToAction("Home/Feed");
                 }
                 return RedirectToAction("../SENHA_ERRADA");
             }

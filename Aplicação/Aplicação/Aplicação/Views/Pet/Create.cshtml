@@ -57,13 +57,13 @@
                     <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
                 </div>
             </div>
-            <div class="bg-success">@ViewBag.new_pet</div>
+            <div class="text-success">@ViewBag.new_pet</div>
         </div>
         }
 
         
 
-        @using (Html.BeginForm("Create2", "Pet", FormMethod.Post))
+        @using (Html.BeginForm("Feed", "Home", FormMethod.Get))
         {
             @Html.AntiForgeryToken()
             <div class="form-group">
