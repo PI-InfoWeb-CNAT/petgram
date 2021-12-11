@@ -19,7 +19,7 @@ namespace Aplicação.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(UsuarioCadastro usuario)
+        public ActionResult Create(Usuario usuario)
         {
             try
             {

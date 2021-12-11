@@ -12,20 +12,14 @@ namespace Aplicação.Controllers
         {
             return View();
         }
-        
-        /*
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-        */
 
         public ActionResult Feed()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Publicar()
+        {
             return View();
         }
     }

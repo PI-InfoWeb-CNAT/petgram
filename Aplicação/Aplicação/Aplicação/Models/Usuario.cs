@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Aplicação.Models
 {
-    public class UsuarioCadastro
+    public class Usuario
     {
         public int ID { get; set; }
 
@@ -45,5 +45,7 @@ namespace Aplicação.Models
         public string ConfirmaSenha { get; set; }
 
         public virtual ICollection<Pet> Pets { get; set; }
+
+        public virtual ICollection<Postagem> Postagens { get; set; }
     }
 }

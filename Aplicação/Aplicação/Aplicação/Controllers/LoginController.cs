@@ -18,11 +18,11 @@ namespace Aplicação.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(UsuarioCadastro usuario)
+        public ActionResult Index(Usuario usuario)
         {
             try
             {
-                UsuarioCadastro userWithThatEmail = usuarioDAL.GetUserByEmail(usuario.Email);
+                Usuario userWithThatEmail = usuarioDAL.GetUserByEmail(usuario.Email);
                 if (usuario.Senha == userWithThatEmail.Senha)
                 {
                     return RedirectToAction("Home/Feed");

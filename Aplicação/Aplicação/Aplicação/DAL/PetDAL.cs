@@ -16,7 +16,7 @@ namespace Aplicação.DAL
             if (Pet.ID == 0)
             {
                 context.Pets.Add(Pet);
-                UsuarioCadastro User = context.Usuarios.Where(u => u.ID == Pet.UserID).First();
+                Usuario User = context.Usuarios.Where(u => u.ID == Pet.UserID).First();
                 User.Pets.Add(Pet);
             }
                 

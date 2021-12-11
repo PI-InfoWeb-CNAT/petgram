@@ -15,7 +15,7 @@ namespace Aplicação.DAL
             Database.SetInitializer<EFContext>(new DropCreateDatabaseIfModelChanges<EFContext>());
         }
 
-        public DbSet<UsuarioCadastro> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Pet> Pets { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,5 +23,6 @@ namespace Aplicação.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
+        public System.Data.Entity.DbSet<Aplicação.Models.Postagem> Postagems { get; set; }
     }
 }

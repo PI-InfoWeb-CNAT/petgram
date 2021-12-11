@@ -21,7 +21,7 @@ namespace Aplicação.Models
         [Required(ErrorMessage = "Me fale um pouco do seu Pet ;)")]
         public string Description { get; set; }
 
-        public virtual UsuarioCadastro Owner { get; set; }
+        public virtual Usuario Owner { get; set; }
         public int UserID { get; set; }
     }
 }
