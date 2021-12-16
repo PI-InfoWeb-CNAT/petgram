@@ -25,5 +25,10 @@ namespace Aplicação.DAL
 
             context.SaveChanges();
         }
+
+        public IQueryable<Postagem> ObterPostagensClassificadasPorData()
+        {
+            return context.Postagens.OrderBy(p => p.Data);
+        }
     }
 }

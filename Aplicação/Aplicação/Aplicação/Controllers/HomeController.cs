@@ -11,12 +11,20 @@ namespace Aplicação.Controllers
     public class HomeController : Controller
     {
         PostagemDAL postDAL = new PostagemDAL();
-        private ActionResult GravarPost(Postagem post)
+        private ActionResult GravarPost(Postagem post, HttpPostedFileBase imagem)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    if (imagem != null)
+                    {
+                        post.ImagemMimeType = imagem.ContentType;
+                        post.Imagem = SetImagem(imagem);
+                        post.NomeArquivo = imagem.FileName;
+                        post.TamanhoArquivo = imagem.ContentLength;
+                    }
+
                     postDAL.GravarPost(post);
                     return RedirectToAction("Feed");
                 }
@@ -29,6 +37,13 @@ namespace Aplicação.Controllers
             }
         }
 
+        private byte[] SetImagem(HttpPostedFileBase imagem)
+        {
+            var bytesImagem = new byte[imagem.ContentLength];
+            imagem.InputStream.Read(bytesImagem, 0, imagem.ContentLength);
+            return bytesImagem;
+        }
+
         public ActionResult Perfil()
         {
             return View();
@@ -36,7 +51,7 @@ namespace Aplicação.Controllers
 
         public ActionResult Feed()
         {
-            return View();
+            return View(postDAL.ObterPostagensClassificadasPorData());
         }
 
 
@@ -44,15 +59,15 @@ namespace Aplicação.Controllers
         public ActionResult Publicar(int UserID)
         {
             ViewBag.UserID = UserID;
-            ViewBag.Data = DateTime.Now;
+            ViewBag.Data = DateTime.Now.ToString();
             return View();
         }
 
         // POST: Publicar
         [HttpPost]
-        public ActionResult Publicar(Postagem post)
+        public ActionResult Publicar(Postagem post, HttpPostedFileBase imagem = null)
         {
-            return GravarPost(post);
+            return GravarPost(post, imagem);
         }
     }
 }

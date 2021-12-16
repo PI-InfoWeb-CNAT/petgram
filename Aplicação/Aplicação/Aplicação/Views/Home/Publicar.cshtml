@@ -16,7 +16,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     
     
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm("Publicar", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })) 
     {
         @Html.AntiForgeryToken()
         
@@ -48,11 +48,17 @@
                 @Html.ValidationMessageFor(model => model.Filtro, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="col-md-offset-7 col-md-5">
+            <div class="form-group">
+                @Html.TextBox("imagem", "", new { type = "file" }) <br />
+            </div>
+        </div>
+
         @Html.HiddenFor(m => m.Data, new { Data = ViewBag.Data })
         @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
-
-        @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-        @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ImagemMimeType)
+        @Html.HiddenFor(model => model.Imagem)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

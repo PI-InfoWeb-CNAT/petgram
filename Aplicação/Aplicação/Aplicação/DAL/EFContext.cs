@@ -1,4 +1,5 @@
-﻿using Aplicação.Models;
+﻿using Aplicação.Migrations;
+using Aplicação.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +13,7 @@ namespace Aplicação.DAL
     {
         public EFContext() : base("conectardb")
         {
-            Database.SetInitializer<EFContext>(new DropCreateDatabaseIfModelChanges<EFContext>());
+            Database.SetInitializer<EFContext>(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -21,9 +22,8 @@ namespace Aplicação.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-        public System.Data.Entity.DbSet<Aplicação.Models.Postagem> Postagems { get; set; }
     }
 }
