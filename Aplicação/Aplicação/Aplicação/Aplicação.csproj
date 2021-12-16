@@ -130,6 +130,7 @@
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="DAL\EFContext.cs" />
     <Compile Include="DAL\PetDAL.cs" />
+    <Compile Include="DAL\PostagemDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -17,6 +17,7 @@ namespace Aplicação.DAL
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<Postagem> Postagens { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
