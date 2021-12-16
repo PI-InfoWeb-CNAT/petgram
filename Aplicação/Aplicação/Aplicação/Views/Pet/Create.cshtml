@@ -63,7 +63,7 @@
 
         
 
-        @using (Html.BeginForm("Feed", "Home", FormMethod.Get))
+        @using (Html.BeginForm("Feed", "Home", FormMethod.Get, new { UserID = ViewBag.UserID }))
         {
             @Html.AntiForgeryToken()
             <div class="form-group">

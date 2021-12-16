@@ -26,7 +26,7 @@ namespace Aplicação.Controllers
                     }
 
                     postDAL.GravarPost(post);
-                    return RedirectToAction("Feed");
+                    return RedirectToAction("Feed", new { UserID = post.UserID });
                 }
 
                 return View(post);
@@ -44,13 +44,26 @@ namespace Aplicação.Controllers
             return bytesImagem;
         }
 
+        public FileContentResult GetImagem(long id)
+        {
+            Postagem post = postDAL.ObterPostagemPorId(id);
+            if (post != null && post.Imagem != null)
+            {
+                return File(post.Imagem, post.ImagemMimeType);
+            }
+            return null;
+        }
+
         public ActionResult Perfil()
         {
             return View();
         }
 
-        public ActionResult Feed()
+
+        // GET: Feed
+        public ActionResult Feed(int UserID)
         {
+            ViewBag.UserID = UserID;
             return View(postDAL.ObterPostagensClassificadasPorData());
         }
 
@@ -68,6 +81,26 @@ namespace Aplicação.Controllers
         public ActionResult Publicar(Postagem post, HttpPostedFileBase imagem = null)
         {
             return GravarPost(post, imagem);
+        }
+
+        // POST: Comentar
+        [HttpPost]
+        public ActionResult Comentar(Mensagem comentario, int postID)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //comentDAL.GravarComentario(comentario);
+                }
+
+                return View(comentario);
+            }
+            catch
+            {
+                return View(comentario);
+            }
+
         }
     }
 }

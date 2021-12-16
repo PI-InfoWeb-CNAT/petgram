@@ -26,6 +26,11 @@ namespace Aplicação.DAL
             context.SaveChanges();
         }
 
+        public Postagem ObterPostagemPorId(long id)
+        {
+            return context.Postagens.Where(p => p.ID == id).First();
+        }
+
         public IQueryable<Postagem> ObterPostagensClassificadasPorData()
         {
             return context.Postagens.OrderBy(p => p.Data);

@@ -12,46 +12,49 @@
     <title>Feed</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Visibilidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filtro)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visibilidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Filtro)
-            </td>
-        </tr>
+
+    @*foreach (var item in Model)
+        {
+
+            @Html.DisplayFor(modelItem => item.UserID)
+
+            @Html.DisplayFor(modelItem => item.Data)
+
+            @Html.DisplayFor(modelItem => item.Descricao)
+
+            @Html.DisplayFor(modelItem => item.Visibilidade)
+
+            @Html.DisplayFor(modelItem => item.Filtro)
+
+        }*@
+
+    @foreach (var item in Model)
+    {
+        <div class="card col align-items-center" style="margin: 10px 20px 10px 20px;">
+            <img class="img-thumbnail img-responsive" style="height: 300px" src="@Url.Action("GetImagem", "Home", new { id = item.ID })" />
+            <div class="card-body">
+                <h4 class="card-title">@Html.DisplayFor(modelItem => item.UserID)</h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+            </div>
+        </div>
+                    
+        <div class="">
+            <p>
+                Faça um comentário sobre a postagem:
+            </p>
+
+            @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { @id = "coment-form", role = "form" }))
+            {
+                @Html.HiddenFor(modelItem => item.ID)
+                @Html.AntiForgeryToken()
+
+                <input type="text" />
+
+                <input type="submit" value="Enviar" />
+            }
+        </div>
     }
-    
-    </table>
+
+    @Html.ActionLink("Publicar postagem", "Publicar", new { UserID = ViewBag.UserID })
 </body>
 </html>

@@ -25,5 +25,7 @@ namespace Aplicação.DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<Aplicação.Models.Mensagem> Mensagems { get; set; }
     }
 }
