@@ -11,6 +11,7 @@ namespace Aplicação.Controllers
     public class HomeController : Controller
     {
         PostagemDAL postDAL = new PostagemDAL();
+        UsuarioDAL usuarioDAL = new UsuarioDAL();
         private ActionResult GravarPost(Postagem post, HttpPostedFileBase imagem)
         {
             try
@@ -55,6 +56,12 @@ namespace Aplicação.Controllers
         }
 
         public ActionResult Perfil()
+        {
+            return View();
+        }
+
+        //GET: Index
+        public ActionResult Index()
         {
             return View();
         }
