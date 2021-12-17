@@ -85,6 +85,12 @@ namespace Aplicação.Controllers
             }
         }
 
+        //GET: Index
+        public ActionResult Index()
+        {
+            return View();
+        }
+
 
         // GET: Feed
         public ActionResult Feed(int UserID)
