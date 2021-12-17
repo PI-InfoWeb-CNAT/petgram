@@ -43,13 +43,8 @@
                 Faça um comentário sobre a postagem:
             </p>
 
-            @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { @id = "coment-form", role = "form" }))
+            @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }))
             {
-                @Html.HiddenFor(modelItem => item.ID)
-                @Html.AntiForgeryToken()
-
-                <input type="text" />
-
                 <input type="submit" value="Enviar" />
             }
         </div>

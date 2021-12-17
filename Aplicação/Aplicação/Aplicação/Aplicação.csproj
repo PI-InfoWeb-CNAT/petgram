@@ -129,6 +129,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="DAL\EFContext.cs" />
+    <Compile Include="DAL\MensagemDAL.cs" />
     <Compile Include="DAL\PetDAL.cs" />
     <Compile Include="DAL\PostagemDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />

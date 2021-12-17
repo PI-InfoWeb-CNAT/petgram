@@ -47,5 +47,7 @@ namespace Aplicação.Models
         public virtual ICollection<Pet> Pets { get; set; }
 
         public virtual ICollection<Postagem> Postagens { get; set; }
+
+        public virtual ICollection<Mensagem> Mensagens { get; set; }
     }
 }

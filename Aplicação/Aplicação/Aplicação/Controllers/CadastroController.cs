@@ -18,6 +18,7 @@ namespace Aplicação.Controllers
             return View();
         }
 
+        // POST: Cadastro
         [HttpPost]
         public ActionResult Create(Usuario usuario)
         {
@@ -36,6 +37,5 @@ namespace Aplicação.Controllers
                 return View(usuario);
             }
         }
-
     }
 }

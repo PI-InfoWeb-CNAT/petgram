@@ -23,13 +23,21 @@ namespace Aplicação.DAL
 
         public Usuario GetUserByID(long id)
         {
-            return context.Usuarios.Where(u => u.ID == id).Include("Pets").First();
+            return context.Usuarios.Where(u => u.ID == id).Include("Pets").Include("Postagens").First();
         }
 
         public Usuario GetUserByEmail(string Email)
         {
             return context.Usuarios.Where(u => u.Email == Email).First();
             //return context.Usuarios.Where(u => u.Email == Email).Include("Pets").First();
+        }
+
+        public Usuario EliminarUsuarioPorId(long id)
+        {
+            Usuario user = GetUserByID(id);
+            context.Usuarios.Remove(user);
+            context.SaveChanges();
+            return user;
         }
 
 

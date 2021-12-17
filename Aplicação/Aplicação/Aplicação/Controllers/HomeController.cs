@@ -11,6 +11,8 @@ namespace Aplicação.Controllers
     public class HomeController : Controller
     {
         PostagemDAL postDAL = new PostagemDAL();
+        MensagemDAL mensagemDAL = new MensagemDAL();
+        UsuarioDAL userDAL = new UsuarioDAL();
         private ActionResult GravarPost(Postagem post, HttpPostedFileBase imagem)
         {
             try
@@ -54,9 +56,33 @@ namespace Aplicação.Controllers
             return null;
         }
 
-        public ActionResult Perfil()
+        public ActionResult Perfil(int UserID)
         {
-            return View();
+
+            return View(userDAL.GetUserByID(UserID));
+        }
+
+        [HttpPost]
+        public ActionResult EditarPerfil(Usuario user)
+        {
+            userDAL.GravarUsuario(user);
+            return RedirectToAction("Perfil", new { UserID = user.ID });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarUsuario(long id)
+        {
+            try
+            {
+                Usuario user = userDAL.EliminarUsuarioPorId(id);
+                TempData["Message"] = "Usuário " + user.Nome.ToUpper() + " foi removido";
+                return RedirectToAction("../Cadastro/Create");
+            }
+            catch
+            {
+                return RedirectToAction("Perfil", new { UserID = id });
+            }
         }
 
 
@@ -85,13 +111,13 @@ namespace Aplicação.Controllers
 
         // POST: Comentar
         [HttpPost]
-        public ActionResult Comentar(Mensagem comentario, int postID)
+        public ActionResult Comentar(Mensagem comentario)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    //comentDAL.GravarComentario(comentario);
+                    mensagemDAL.GravarMensagem(comentario);
                 }
 
                 return View(comentario);
