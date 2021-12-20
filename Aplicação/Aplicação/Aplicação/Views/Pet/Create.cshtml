@@ -90,17 +90,16 @@
                         <tr>
                             <td>@pet.Name</td>
                             <td>@pet.Category</td>
-                            <!--<td><a href="/pet/1/edit"><span class="glyphicon glyphicon-pencil">Edit</span></a></td>-->
                             <td>
                                 <p>
-                                    <a href="#" class="btn btn-info btn-sm">
+                                    <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
                                         <span class="glyphicon glyphicon-pencil"></span> Editar
                                     </a>
                                 </p>
                             </td>
                             <td>
                                 <p>
-                                    <a href="#" class="btn btn-danger btn-sm">
+                                    <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
                                         <span class="glyphicon glyphicon-trash"></span> Deletar
                                     </a>
                                 </p>

@@ -33,7 +33,7 @@ namespace Aplicação.DAL
 
         public IQueryable<Postagem> ObterPostagensClassificadasPorData()
         {
-            return context.Postagens.OrderBy(p => p.Data);
+            return context.Postagens.OrderByDescending(p => p.Data);
         }
     }
 }

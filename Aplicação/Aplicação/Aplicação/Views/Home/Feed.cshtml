@@ -58,10 +58,10 @@
             Faça um comentário sobre a postagem:
         </p>
 
-            @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }))
-            {
-                <input type="submit" value="Enviar" />
-            }
+        @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }))
+        {
+            <input type="submit" value="Enviar" />
+        }
     </div>
     }
 
