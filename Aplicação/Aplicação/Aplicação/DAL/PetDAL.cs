@@ -26,5 +26,16 @@ namespace Aplicação.DAL
             context.SaveChanges();
         }
 
+        public Usuario GetUserByID(long id)
+        {
+            return context.Usuarios.Where(u => u.ID == id).Include("Pets").Include("Postagens").First();
+        }
+
+        public IQueryable<Pet> GetPetsByUserId(long UserID)
+        {
+            return context.Pets.Where(p => p.UserID == UserID);
+        }
+
+        
     }
 }

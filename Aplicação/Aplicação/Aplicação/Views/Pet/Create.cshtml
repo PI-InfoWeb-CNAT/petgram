@@ -38,43 +38,80 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <div class="col-md-offset-5 col-md-2">
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
-                    <div class="col-md-offset-5 col-md-2">
-                        @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
-                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <div class="col-md-offset-5 col-md-2">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
-
-                <div class="form-group">
-                    <div style="text-align:center">
-                        <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
-                    </div>
-                </div>
-                <div class="text-white text-center">@ViewBag.new_pet</div>
-
+    <div class="form-horizontal">
+        <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-offset-5 col-md-2">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
+            <div class="col-md-offset-5 col-md-2">
+                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-offset-5 col-md-2">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
+
+        <div class="form-group">
+            <div style="text-align:center">
+                <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+            </div>
+        </div>
+        <div class="text-white text-center">@ViewBag.new_pet</div>
+
+        <h4>Pets Criados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do pet</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pet in @ViewBag.Pets)
+                    {
+                        <tr>
+                            <td>@pet.Name</td>
+                            <td>@pet.Category</td>
+                            <!--<td><a href="/pet/1/edit"><span class="glyphicon glyphicon-pencil">Edit</span></a></td>-->
+                            <td>
+                                <p>
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span> Deletar
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
         }
 
 

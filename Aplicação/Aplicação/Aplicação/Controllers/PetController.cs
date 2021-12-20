@@ -34,6 +34,7 @@ namespace Aplicação.Controllers
         {
             if (new_pet)
                 ViewBag.new_pet = "Pet adicionado!";
+                ViewBag.Pets = petDAL.GetPetsByUserId(UserID);
 
             ViewBag.UserID = UserID;
             return View();
