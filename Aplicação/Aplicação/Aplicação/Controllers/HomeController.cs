@@ -11,64 +11,39 @@ namespace Aplicação.Controllers
     public class HomeController : Controller
     {
         PostagemDAL postDAL = new PostagemDAL();
-        MensagemDAL mensagemDAL = new MensagemDAL();
         UsuarioDAL userDAL = new UsuarioDAL();
-        private ActionResult GravarPost(Postagem post, HttpPostedFileBase imagem)
+        
+        //GET: Index
+        public ActionResult Index()
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (imagem != null)
-                    {
-                        post.ImagemMimeType = imagem.ContentType;
-                        post.Imagem = SetImagem(imagem);
-                        post.NomeArquivo = imagem.FileName;
-                        post.TamanhoArquivo = imagem.ContentLength;
-                    }
-
-                    postDAL.GravarPost(post);
-                    return RedirectToAction("Feed", new { UserID = post.UserID });
-                }
-
-                return View(post);
-            }
-            catch
-            {
-                return View(post);
-            }
+            return View();
         }
 
-        private byte[] SetImagem(HttpPostedFileBase imagem)
+        //GET: Perfil
+        public ActionResult Perfil(long UserID)
         {
-            var bytesImagem = new byte[imagem.ContentLength];
-            imagem.InputStream.Read(bytesImagem, 0, imagem.ContentLength);
-            return bytesImagem;
-        }
-
-        public FileContentResult GetImagem(long id)
-        {
-            Postagem post = postDAL.ObterPostagemPorId(id);
-            if (post != null && post.Imagem != null)
-            {
-                return File(post.Imagem, post.ImagemMimeType);
-            }
-            return null;
-        }
-
-        public ActionResult Perfil(int UserID)
-        {
-
+            ViewBag.UserID = UserID;
             return View(userDAL.GetUserByID(UserID));
         }
 
+        //GET: Editar Perfil
+        public ActionResult EditarPerfil(long userID)
+        {
+            Usuario user = userDAL.GetUserByID(userID);
+            ViewBag.UserID = userID;
+            return View(user);
+        }
+
+        //POST: Editar Perfil
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditarPerfil(Usuario user)
         {
             userDAL.GravarUsuario(user);
             return RedirectToAction("Perfil", new { UserID = user.ID });
         }
 
+        //POST: Deletar Usuario
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeletarUsuario(long id)
@@ -85,12 +60,6 @@ namespace Aplicação.Controllers
             }
         }
 
-        //GET: Index
-        public ActionResult Index()
-        {
-            return View();
-        }
-
 
         // GET: Feed
         public ActionResult Feed(int UserID)
@@ -100,39 +69,5 @@ namespace Aplicação.Controllers
         }
 
 
-        // GET: Publicar
-        public ActionResult Publicar(int UserID)
-        {
-            ViewBag.UserID = UserID;
-            ViewBag.Data = DateTime.Now.ToString();
-            return View();
-        }
-
-        // POST: Publicar
-        [HttpPost]
-        public ActionResult Publicar(Postagem post, HttpPostedFileBase imagem = null)
-        {
-            return GravarPost(post, imagem);
-        }
-
-        // POST: Comentar
-        [HttpPost]
-        public ActionResult Comentar(Mensagem comentario)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    mensagemDAL.GravarMensagem(comentario);
-                }
-
-                return View(comentario);
-            }
-            catch
-            {
-                return View(comentario);
-            }
-
-        }
     }
 }

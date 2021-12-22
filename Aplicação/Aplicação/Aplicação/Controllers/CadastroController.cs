@@ -20,6 +20,7 @@ namespace Aplicação.Controllers
 
         // POST: Cadastro
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Usuario usuario)
         {
             try

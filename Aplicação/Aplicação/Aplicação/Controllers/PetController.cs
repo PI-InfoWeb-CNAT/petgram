@@ -11,7 +11,22 @@ namespace Aplicação.Controllers
     public class PetController : Controller
     {
         PetDAL petDAL = new PetDAL();
-        private ActionResult GravarPet(Pet Pet)
+
+        // GET: Pet
+        public ActionResult Create(int UserID, bool new_pet)
+        {
+            if (new_pet)
+                ViewBag.new_pet = "Pet adicionado!";
+                ViewBag.Pets = petDAL.GetPetsByUserId(UserID);
+
+            ViewBag.UserID = UserID;
+            return View();
+        }
+
+        // POST: Pet
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Pet Pet)
         {
             try
             {
@@ -28,33 +43,5 @@ namespace Aplicação.Controllers
                 return View(Pet);
             }
         }
-
-        // GET: Pet
-        public ActionResult Create(int UserID, bool new_pet)
-        {
-            if (new_pet)
-                ViewBag.new_pet = "Pet adicionado!";
-                ViewBag.Pets = petDAL.GetPetsByUserId(UserID);
-
-            ViewBag.UserID = UserID;
-            return View();
-        }
-
-        // POST: Pet
-        [HttpPost]
-        public ActionResult Create(Pet Pet)
-        {
-            return GravarPet(Pet);
-        }
-
-        
-
-        /* POST: Pet
-        [HttpPost]
-        public ActionResult Create2(Pet Pet)
-        {
-            return RedirectToAction("../Cadastro/Create");
-        }
-        */
     }
 }

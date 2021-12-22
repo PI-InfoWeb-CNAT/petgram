@@ -127,7 +127,9 @@
     <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MensagemController.cs" />
     <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\PostagemController.cs" />
     <Compile Include="DAL\EFContext.cs" />
     <Compile Include="DAL\MensagemDAL.cs" />
     <Compile Include="DAL\PetDAL.cs" />
@@ -184,13 +186,15 @@
     <Content Include="Views\Cadastro\Create.cshtml" />
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Home\Publicar.cshtml" />
     <Content Include="Views\Home\Perfil.cshtml" />
     <Content Include="Views\Home\Feed.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\EditarPerfil.cshtml" />
+    <Content Include="Views\Postagem\Publicar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Mensagem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

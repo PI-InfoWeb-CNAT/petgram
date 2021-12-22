@@ -17,7 +17,9 @@ namespace Aplicação.Controllers
             return View();
         }
 
+        // POST: Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(Usuario usuario)
         {
             try

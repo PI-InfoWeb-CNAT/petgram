@@ -31,9 +31,27 @@ namespace Aplicação.DAL
             return context.Postagens.Where(p => p.ID == id).First();
         }
 
+        public Postagem EliminarPostagemPorId(long id)
+        {
+            Postagem post= ObterPostagemPorId(id);
+            context.Postagens.Remove(post);
+            context.SaveChanges();
+            return post;
+        }
+
         public IQueryable<Postagem> ObterPostagensClassificadasPorData()
         {
             return context.Postagens.OrderByDescending(p => p.Data);
+        }
+
+        public long RegistrarLike(long id)
+        {
+            Postagem post = ObterPostagemPorId(id);
+            post.Likes += 1;
+            context.Entry(post).State = EntityState.Modified;
+            context.SaveChanges();
+            return post.Likes;
+
         }
     }
 }

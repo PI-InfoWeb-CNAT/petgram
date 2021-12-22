@@ -19,8 +19,8 @@
 </head>
 <body>
     <div class='nav-brand' id='petgramlogo'>
-        <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100px">
+        <a href="@Url.Action("Perfil", "Home", new { UserID = ViewBag.UserID })">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100">
         </a>
     </div>
     @*foreach (var item in Model)
@@ -39,30 +39,31 @@
         }*@
 
     <hr>
-    @Html.ActionLink("Publicar postagem", "Publicar", new { UserID = ViewBag.UserID })
+    @Html.ActionLink("Publicar postagem", "Publicar", "Postagem", new { UserID = ViewBag.UserID }, null)
 
     @foreach (var item in Model)
     {
-    <div class="card col align-items-left" style="margin: 10px 20px 10px 20px;">
-        <img class="img-thumbnail img-responsive" style="height: 400px;" src="@Url.Action("GetImagem", "Home", new { id = item.ID })" />
+        <div class="card col align-items-left" style="margin: 10px 20px 10px 20px;">
+            <img class="img-thumbnail img-responsive" style="height: 400px;" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
 
 
-        <div class="card-body">
-            <h4 class="card-title">@Html.DisplayFor(modelItem => item.UserID)</h4>
-            <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+            <div class="card-body">
+                <h4 class="card-title">@Html.DisplayFor(modelItem => item.UserID)</h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="">
-        <p>
-            Faça um comentário sobre a postagem:
-        </p>
+        <div class="">
+            <p>
+                Faça um comentário sobre a postagem:
+            </p>
 
-        @using (Html.BeginForm("Comentar", "Home", FormMethod.Post, new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }))
-        {
-            <input type="submit" value="Enviar" />
-        }
-    </div>
+            @using (Html.BeginForm("Comentar", "Mensagem", new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }, FormMethod.Post, new { @id = "comment-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Enviar" />
+            }
+        </div>
     }
 
 </body>
