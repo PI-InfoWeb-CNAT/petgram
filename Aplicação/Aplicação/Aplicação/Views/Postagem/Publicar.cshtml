@@ -22,10 +22,10 @@
                 autocomplete: "off"
             }
         </style>
+        <script src="https://kit.fontawesome.com/d17ae299ca.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
-
         <div class='nav-brand' id='petgramlogo'>
             <a href='/Home'>
                 <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100px">
@@ -39,13 +39,15 @@
         {
             @Html.AntiForgeryToken()
 
-            <div>
+            @*<div>
                 @Html.ActionLink("Voltar ao feed", "Feed", "Home", new { UserID = ViewBag.UserID }, null)
             </div>
+            <i class="fas fa-arrow-left"></i>*@
+
+            <div style="display:inline-block"><a href="~/Home/Feed?UserID=1" class="fas fa-arrow-left" style="margin-left:1%; text-decoration:none; color:white"></a></div>
+            <div style="display:inline-block"><h4 style="color:white">Nova publicação</h4></div>
 
             <div class="form-horizontal">
-                <h4 class='text-left' style="color:white; margin-left:1%">Nova publicação</h4>
-                <hr style="color:#FD9448">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="col-md-offset-7 col-md-5" style="margin-left: 1%">
@@ -54,9 +56,11 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="color:white; display: flex; flex-direction: row; justify-content: left; margin-left:1%">
+                <hr style="color:#FD9448">
+                
+                <div class="form-group" style="display: flex; flex-direction: row; justify-content: left; margin-left:1%">
                     @*@Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                    <div class="col-md-offset-5 col-md-2" style="margin-top:1%">
+                    <div class="col-md-offset-5 col-md-2" style="margin-top: 1%">
                         @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Escreva uma legenda..." } })
                         @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
                     </div>
@@ -109,7 +113,7 @@
                 <div class="form-check">
                     @*Html.LabelFor(model => model.Visibilidade, htmlAttributes: new { @class = "control-label col-md-2" }
                     <div class="col-md-offset-5 col-md-2">*@
-                            @*Html.EnumDropDownListFor(model => model.Visibilidade, htmlAttributes: new { @class = "form-control" })
+                    @*Html.EnumDropDownListFor(model => model.Visibilidade, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Visibilidade, "", new { @class = "text-danger" })*@
                     <input type="radio" id="9" name="visibilidade" value="9" style="margin-left:1%">
                     <label for="9" style="color:white">Privado</label>
