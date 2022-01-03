@@ -27,54 +27,54 @@
         }
     </style>
 </head>
-    <body>
-        <div class='nav-brand' id='petgramlogo'>
-            <a href='/Home'>
-                <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100">
-            </a>
-        </div>
+<body>
+    <div class='nav-brand' id='petgramlogo'>
+        <a href='/Home'>
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100">
+        </a>
+    </div>
 
-        @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+    @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
-            <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
+            @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
 
-        <div class="form-group">
-            <div style="text-align:center">
-                <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+            <div class="form-group">
+                <div style="text-align:center">
+                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+                </div>
             </div>
-        </div>
-        <div class="text-white text-center">@ViewBag.new_pet</div>
+            <div class="text-white text-center">@ViewBag.new_pet</div>
 
-        <h4>Pets Criados</h4>
+            <h4>Pets Criados</h4>
             <table class="table">
                 <thead>
                     <tr>
@@ -86,43 +86,39 @@
                 </thead>
                 <tbody>
                     @*foreach (var pet in @ViewBag.Pets)
-                    {
-                        <tr>
-                            <td>@pet.Name</td>
-                            <td>@pet.Category</td>
-                            <td>
-                                <p>
-                                    <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span> Editar
-                                    </a>
-                                </p>
-                            </td>
-                            <td>
-                                <p>
-                                    <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-trash"></span> Deletar
-                                    </a>
-                                </p>
-                            </td>
-                        </tr>
-                    }*@
+                        {
+                            <tr>
+                                <td>@pet.Name</td>
+                                <td>@pet.Category</td>
+                                <td>
+                                    <p>
+                                        <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
+                                            <span class="glyphicon glyphicon-pencil"></span> Editar
+                                        </a>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
+                                            <span class="glyphicon glyphicon-trash"></span> Deletar
+                                        </a>
+                                    </p>
+                                </td>
+                            </tr>
+                        }*@
                 </tbody>
             </table>
-        }
+            }
 
+        </div>
+    }
+
+
+    <div class="btn btn-default">
+        <div style="text-align:center; background-color:#2A5594; color:white; border-color:#2A5594; margin-top:10%">
+            @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, null)
+        </div>
     </div>
-        }
 
-
-
-        @using (Html.BeginForm("Feed", "Home", FormMethod.Get, new { UserID = ViewBag.UserID }))
-        {
-            @Html.AntiForgeryToken()
-            <div class="form-group">
-                <div style="text-align:center">
-                    <input type="submit" value="Seja um Petgramer!" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; margin-top:10%" />
-                </div>
-            </div>
-        }
-    </body>
+</body>
 </html>
