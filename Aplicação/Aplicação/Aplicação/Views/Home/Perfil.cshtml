@@ -185,7 +185,7 @@
     </p>
 
     <p>
-        @using (Html.BeginForm("DeletarUsuario", "Home", new { UserID = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
+        @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
         {
             @Html.AntiForgeryToken()
             <input type="submit" value="Excluir conta" />
