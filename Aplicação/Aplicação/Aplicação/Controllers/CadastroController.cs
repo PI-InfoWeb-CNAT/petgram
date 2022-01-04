@@ -23,20 +23,8 @@ namespace Aplicação.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuario usuario)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    usuarioDAL.GravarUsuario(usuario);
-                    return RedirectToAction("../Pet/Create", new { UserID = usuario.ID, new_pet = false });
-                }
-
-                return View(usuario);
-            }
-            catch
-            {
-                return View(usuario);
-            }
+            usuarioDAL.GravarUsuario(usuario);
+            return RedirectToAction("../Pet/Create", new { UserID = usuario.ID, new_pet = false });
         }
     }
 }

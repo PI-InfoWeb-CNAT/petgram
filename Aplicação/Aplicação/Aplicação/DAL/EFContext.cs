@@ -1,4 +1,4 @@
-﻿//using Aplicação.Migrations;
+﻿using Aplicação.Migrations;
 using Aplicação.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Aplicação.DAL
     {
         public EFContext() : base("conectardb")
         {
-            //Database.SetInitializer<EFContext>(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
+            Database.SetInitializer<EFContext>(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
