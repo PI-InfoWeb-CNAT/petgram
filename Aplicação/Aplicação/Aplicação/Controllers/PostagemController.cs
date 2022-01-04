@@ -57,7 +57,7 @@ namespace Aplicação.Controllers
                     }
 
                     postDAL.GravarPost(post);
-                    return RedirectToAction("Feed", new { UserID = post.UserID });
+                    return RedirectToAction("../Home/Feed", new { UserID = post.UserID });
                 }
 
                 return View(post);

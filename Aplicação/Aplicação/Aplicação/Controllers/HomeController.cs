@@ -29,18 +29,23 @@ namespace Aplicação.Controllers
         //GET: Editar Perfil
         public ActionResult EditarPerfil(long userID)
         {
-            Usuario user = userDAL.GetUserByID(userID);
+            Usuario usuario = userDAL.GetUserByID(userID);
             ViewBag.UserID = userID;
-            return View(user);
+            return View(usuario);
         }
 
         //POST: Editar Perfil
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarPerfil(Usuario user)
+        public ActionResult EditarPerfil(Usuario usuario)
         {
-            userDAL.GravarUsuario(user);
-            return RedirectToAction("Perfil", new { UserID = user.ID });
+            if (ModelState.IsValid)
+            {
+                userDAL.GravarUsuario(usuario);
+                return RedirectToAction("Perfil", new { UserID = usuario.ID });
+            }
+            return View(usuario);
+            
         }
 
         //POST: Deletar Usuario

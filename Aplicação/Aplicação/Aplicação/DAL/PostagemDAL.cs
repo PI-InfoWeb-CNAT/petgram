@@ -44,7 +44,7 @@ namespace Aplicação.DAL
             return context.Postagens.OrderByDescending(p => p.Data);
         }
 
-        public long RegistrarLike(long id)
+        public long? RegistrarLike(long id)
         {
             Postagem post = ObterPostagemPorId(id);
             post.Likes += 1;

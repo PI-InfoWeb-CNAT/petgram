@@ -20,7 +20,7 @@ namespace Aplicação.Models
         public VisibilidadePostagem Visibilidade { get; set; }
         public Categorias Filtro { get; set; }
         public ICollection<Mensagem> Comentarios { get; set; }
-        public long Likes { get; set; }
+        public long? Likes { get; set; }
         public enum VisibilidadePostagem
         {
             Público,

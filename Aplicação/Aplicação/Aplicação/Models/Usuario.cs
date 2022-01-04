@@ -10,10 +10,6 @@ namespace Aplicação.Models
     public class Usuario
     {
         public int ID { get; set; }
-
-        [Required(ErrorMessage = "Por favor, insira um nome de usuário.")]
-        [DisplayName("Usuário")]
-        [MaxLength(50, ErrorMessage = "O nome de usuário é muito grande.")]
         public string User { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira seu nome.")]

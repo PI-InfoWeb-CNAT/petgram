@@ -185,8 +185,8 @@
     <Content Include="Views\Home\Perfil.cshtml" />
     <Content Include="Views\Home\Feed.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\EditarPerfil.cshtml" />
     <Content Include="Views\Postagem\Publicar.cshtml" />
+    <Content Include="Views\Home\EditarPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

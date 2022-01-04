@@ -77,37 +77,37 @@
                 </div>
             </div>
             @*<div class="form-check">
-                <input type="radio" id="1" name="alternativa" value="1" style="margin-left:1%">
-                <label for="1" style="color:white">Cachorro</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="2" name="alternativa" value="2" style="margin-left:1%">
-                <label for="2" style="color:white">Gato</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="3" name="alternativa" value="3" style="margin-left:1%">
-                <label for="3" style="color:white">Peixe</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="4" name="alternativa" value="4" style="margin-left:1%">
-                <label for="3" style="color:white">Pássaro</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="5" name="alternativa" value="5" style="margin-left:1%">
-                <label for="3" style="color:white">Encontro</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="6" name="alternativa" value="6" style="margin-left:1%">
-                <label for="3" style="color:white">Dicas</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="7" name="alternativa" value="7" style="margin-left:1%">
-                <label for="3" style="color:white">Dúvida</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="8" name="alternativa" value="8" style="margin-left:1%">
-                <label for="3" style="color:white">Personalizado:</label>
-            </div>*@
+            <input type="radio" id="1" name="alternativa" value="1" style="margin-left:1%">
+            <label for="1" style="color:white">Cachorro</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="2" name="alternativa" value="2" style="margin-left:1%">
+            <label for="2" style="color:white">Gato</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="3" name="alternativa" value="3" style="margin-left:1%">
+            <label for="3" style="color:white">Peixe</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="4" name="alternativa" value="4" style="margin-left:1%">
+            <label for="3" style="color:white">Pássaro</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="5" name="alternativa" value="5" style="margin-left:1%">
+            <label for="3" style="color:white">Encontro</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="6" name="alternativa" value="6" style="margin-left:1%">
+            <label for="3" style="color:white">Dicas</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="7" name="alternativa" value="7" style="margin-left:1%">
+            <label for="3" style="color:white">Dúvida</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="8" name="alternativa" value="8" style="margin-left:1%">
+            <label for="3" style="color:white">Personalizado:</label>
+        </div>*@
             <hr style="color:#FD9448">
 
             <h6 style="margin-top: 1%; color: white; margin-left: 1%">Visibilidade da postagem:</h6>
@@ -118,34 +118,39 @@
                     @Html.ValidationMessageFor(model => model.Visibilidade, "", new { @class = "text-danger" })
                 </div>
             </div>
-                @*<div class="form-check">
-                    <input type="radio" id="9" name="visibilidade" value="9" style="margin-left:1%">
-                    <label for="9" style="color:white">Privado</label>
+            @*<div class="form-check">
+            <input type="radio" id="9" name="visibilidade" value="9" style="margin-left:1%">
+            <label for="9" style="color:white">Privado</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="10" name="visibilidade" value="10" style="margin-left:1%">
+            <label for="10" style="color:white">Público</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" id="11" name="visibilidade" value="11" style="margin-left:1%">
+            <label for="11" style="color:white">Amigos</label>
+        </div>*@
+
+            <hr style="color:#FD9448">
+
+            @Html.HiddenFor(m => m.Data, new { Data = ViewBag.Data })
+            @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
+            @Html.HiddenFor(model => model.ImagemMimeType)
+            @Html.HiddenFor(model => model.Imagem)
+            @Html.HiddenFor(model => model.Likes)
+
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Likes, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div style="text-align:center">
+                    <input type="submit" value="Publicar" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; margin-top:1%" />
                 </div>
-                <div class="form-check">
-                    <input type="radio" id="10" name="visibilidade" value="10" style="margin-left:1%">
-                    <label for="10" style="color:white">Público</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="11" name="visibilidade" value="11" style="margin-left:1%">
-                    <label for="11" style="color:white">Amigos</label>
-                </div>*@
-
-                <hr style="color:#FD9448">
-
-                @Html.HiddenFor(m => m.Data, new { Data = ViewBag.Data })
-                @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
-                @Html.HiddenFor(model => model.ImagemMimeType)
-                @Html.HiddenFor(model => model.Imagem)
-                @Html.HiddenFor(model => model.Likes)
-
-                <div class="form-group">
-                    <div style="text-align:center">
-                        <input type="submit" value="Publicar" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; margin-top:1%" />
-                    </div>
-                </div>
-
             </div>
+
+        </div>
         }
 </body>
 </html>
