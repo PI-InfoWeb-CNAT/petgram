@@ -22,7 +22,7 @@
 <body>
     <div class='nav-brand' id='petgramlogo'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
         </a>
     </div>
     @Scripts.Render("~/bundles/jquery")
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <hr style="color:#FD9448">
+            <hr style="color:#FD9448; height:2px">
 
             <div class="form-group" style="display: flex; flex-direction: row; justify-content: left; margin-left:1%">
                 @*@Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })*@
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <hr style="color:#FD9448">
+            <hr style="color: #FD9448; height:2px">
 
             <h6 style="margin-top: 1%; color: white; margin-left:1%">Categoria do post:</h6>
             <div class="form-group" style="color: white; display: flex; flex-direction: row; justify-content: left; margin-left: 1% ">
@@ -104,7 +104,7 @@
             <input type="radio" id="8" name="alternativa" value="8" style="margin-left:1%">
             <label for="3" style="color:white">Personalizado:</label>
         </div>*@
-            <hr style="color:#FD9448">
+            <hr style="color: #FD9448; height: 2px">
 
             <h6 style="margin-top: 1%; color: white; margin-left: 1%">Visibilidade da postagem:</h6>
             <div class="form-group" style="color: white; display: flex; flex-direction: row; justify-content: left; margin-left: 1% ">
@@ -127,7 +127,7 @@
             <label for="11" style="color:white">Amigos</label>
         </div>*@
 
-            <hr style="color:#FD9448">
+            <hr style="color: #FD9448; height: 2px">
 
             @Html.HiddenFor(m => m.Data, new { Data = ViewBag.Data })
             @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })

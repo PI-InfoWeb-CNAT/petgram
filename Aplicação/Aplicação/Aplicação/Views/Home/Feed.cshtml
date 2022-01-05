@@ -20,7 +20,7 @@
 <body>
     <div class='nav-brand' id='petgramlogo'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
         </a>
     </div>
     @*foreach (var item in Model)
@@ -42,17 +42,27 @@
 
     @foreach (var item in Model)
     {
-        <div class="card col align-items-left" style="margin: 10px 20px 10px 20px; background-color: #EB7E2F">
-            <img class="img-thumbnail img-responsive" style="width: 50%; height: 4%; margin-left: 25%; margin-right: 25%;" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
+        <div class="card col align-items-left" style="margin: 10px 25% 10px 25%; background-color: #EB7E2F; border-color: #EB7E2F">
+            <img class="img-thumbnail img-responsive" style="width: 90%; margin-left:5%; margin-right:5%" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
 
 
-            <div class="card-body" style="margin: 10px 20px 10px 20px; background-color: #EB7E2F">
-                <h4 class="card-title" style="color:white">@Html.DisplayFor(modelItem => item.UserID)</h4>
-                <p class="card-text" style="color:white">@Html.DisplayFor(modelItem => item.Descricao)</p>**
+            <div class="card-body" style="background-color: #EB7E2F; margin-left: 5%; margin-right: 5%; margin-top: 1%">
+                <h5 class="card-title" style="color: white; display: inline-block">@Html.DisplayFor(modelItem => item.UserID)</h5>
+                <h6 class="card-text" style="color: white; display: inline-block">@Html.DisplayFor(modelItem => item.Descricao)</h6>
+            </div>
+
+            <div style="margin-left: 5%; margin-right: 5%; margin-top:1%">
+                <h6 class="card-text" style="color:white">Faça um comentário sobre a postagem:</h6>
+                <br />
+                @using (Html.BeginForm("Comentar", "Mensagem", new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }, FormMethod.Post, new { @id = "comment-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Enviar" style="background-color: #2A5594; color: white; border-color: #2A5594"/>
+                }
             </div>
         </div>
 
-        <div class="" style="margin: 10px 20px 10px 20px;">
+        @*<div class="" style="margin: 10px 20px 10px 20px;">
             <p>
                 Faça um comentário sobre a postagem:
             </p>
@@ -62,8 +72,8 @@
                 @Html.AntiForgeryToken()
                 <input type="submit" value="Enviar" />
             }
-        </div>
-        <hr style="color:#FD9448">
+        </div>*@
+        <hr style="color:#FD9448; height:2px">
     }
 
 </body>

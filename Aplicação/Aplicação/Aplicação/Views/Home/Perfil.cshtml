@@ -20,19 +20,18 @@
 
         body {
             margin-top: 20px;
-            background: #eee;
+            background-color: #EB7E2F;
         }
 
         .social-avatar {
             padding: 15px 15px 0 15px;
         }
 
-        .social-avatar img {
-            height: 40px;
-            width: 40px;
-            margin-right: 10px;
-        }
-
+            .social-avatar img {
+                height: 40px;
+                width: 40px;
+                margin-right: 10px;
+            }
     </style>
 </head>
 <body>
@@ -42,13 +41,15 @@
 
     <div class='nav-brand' id='petgramlogo'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100px">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
         </a>
     </div>
     <div>
-        <h4>Usuario</h4>
-        <hr />
-        <dl class="dl-horizontal">
+        <div style="margin-left: 1%; color: white">
+            @Html.DisplayFor(model => model.User)
+        </div>
+        <hr style="color: #FD9448; height:2px">
+        <dl class="dl-horizontal" style="margin-left: 1%; color: white">
             <dt>
                 @Html.DisplayNameFor(model => model.User)
             </dt>
@@ -100,13 +101,20 @@
 
         </dl>
     </div>
-    <h4>Pets:</h4>
+    <h4 style="margin-left: 1%; color: white">Pets:</h4>
     @foreach (var item in Model.Pets)
     {
-        @Html.DisplayFor(modelItem => item.Name) <br />
-        @Html.DisplayFor(modelItem => item.Description) <br />
-        @Html.DisplayFor(modelItem => item.Category) <br />
-
+        <dl style="margin-left:1%; color:white">
+            <dd>
+                @Html.DisplayFor(modelItem => item.Name)
+            </dd>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Description)
+            </dd>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Category)
+            </dd>
+        </dl>
     }
     <br /><br />
 

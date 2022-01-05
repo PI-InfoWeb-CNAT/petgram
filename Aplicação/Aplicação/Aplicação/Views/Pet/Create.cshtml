@@ -30,7 +30,7 @@
 <body>
     <div class='nav-brand' id='petgramlogo'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' width="100">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
         </a>
     </div>
 
@@ -74,50 +74,52 @@
             </div>
             <div class="text-white text-center">@ViewBag.new_pet</div>
 
-            <h4>Pets Criados</h4>
-            <table class="table">
-                <thead>
+            <h4 class='text-center' style="margin-top:8%; color:white;">Pets Criados</h4>
+            <table class="table" class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
+                <thead style="position:absolute">
                     <tr>
-                        <th scope="col">Nome do pet</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col" style="color:white">Nome do pet</th>
+                        <th scope="col" style="color:white">Categoria</th>
+                        <th scope="col" style="color:white"></th>
+                        <th scope="col" style="color:white"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="position: relative; top: 30px; color: white;">
                     @foreach (var pet in @ViewBag.Pets)
-                        {
-                            <tr>
-                                <td>@pet.Name</td>
-                                <td>@pet.Category</td>
-                                <td>
-                                    <p>
-                                        <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
-                                            <span class="glyphicon glyphicon-pencil"></span> Editar
-                                        </a>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
-                                            <span class="glyphicon glyphicon-trash"></span> Deletar
-                                        </a>
-                                    </p>
-                                </td>
-                            </tr>
-                        }
+                    {
+                        <tr>
+                            <td style="color:white">@pet.Name</td>
+                            <td style="color:white">@pet.Category</td>
+                            <td>
+                                <p>
+                                    <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span> Deletar
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
-
+           @*<div class="form-group" style="text-decoration: none; text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">
+                <div>
+                    @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, null)
+                </div>
+            </div>*@
+           <a href='@Url.Action("Feed", "Home", new { UserID = ViewBag.UserID })'>
+               <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Seja um Petgrammer!</button>
+           </a>
+            @*<a href="~/Views/Home/Feed.cshtml">
+                <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Meu Botão</button>
+            </a>*@
         </div>
     }
-
-
-    <div class="btn btn-default">
-        <div style="text-align:center; background-color:#2A5594; color:white; border-color:#2A5594; margin-top:10%">
-            @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, null)
-        </div>
-    </div>
-
 </body>
 </html>

@@ -27,7 +27,7 @@
 <body>
     <div class='nav-brand' id='petgramlogo'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/main/images/logo.jpeg?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
         </a>
     </div>
 
@@ -35,73 +35,74 @@
     {
         @Html.AntiForgeryToken()
 
-       <div style=" margin-left: 40%; margin-right: 40%; width: 20%;">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div style=" margin-left: 40%; margin-right: 40%; width: 20%;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group" style="color:white">
-                @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <h4 class='text-center' style="margin-top:40%; color:white;">Por gentileza, preencha os seus dados:</h4>
-                <div style="margin-top:1%">
-                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
-                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                <div class="form-group" style="color:white">
+                    @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <h4 class='text-center' style="margin-top:40%; color:white;">Por gentileza, preencha os seus dados:</h4>
+                    <div style="margin-top:1%">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group" style="color:white">
-                @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome de usuário" } })
-                    @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+                <div class="form-group" style="color:white">
+                    @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome de usuário" } })
+                        @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senha" } })
-                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senha" } })
+                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirme sua senha" } })
-                    @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirme sua senha" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.Idade, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.TextBoxFor(model => model.Data_Nascimento, new { @placeholder = "Sua data de nascimento", @type = "date", @class = "form-control datepicker" })
-                    @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Idade, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.TextBoxFor(model => model.Data_Nascimento, new { @placeholder = "Sua data de nascimento", @type = "date", @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group" style="color:white">
-                @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <div>
-                    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre você" } })
-                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                <div class="form-group" style="color:white">
+                    @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                    <div>
+                        @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre você" } })
+                        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div style="text-align:center">
-                    <input type="submit" value="Próximo" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
-                </div>
-            </div>
+                <div class="form-group">
+                        <div style="text-align:center">
+                            <input type="submit" value="Próximo" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+                        </div>
+                    </div>
 
-        </div>
-    }
-</body>
+
+            </div>
+        }
+    </body>
 </html>
