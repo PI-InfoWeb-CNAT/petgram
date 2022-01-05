@@ -16,6 +16,7 @@
             background-color: #EB7E2F;
         }
     </style>
+    <script src="https://kit.fontawesome.com/d17ae299ca.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class='nav-brand' id='petgramlogo'>
@@ -38,7 +39,8 @@
 
         }*@
 
-    @Html.ActionLink("Publicar postagem", "Publicar", "Postagem", new { UserID = ViewBag.UserID }, null)
+    @*Html.ActionLink("Publicar postagem", "Publicar", "Postagem", new { UserID = ViewBag.UserID }, null)
+        <div style="display: inline-block; margin-left: 1%;"><a href="~/Views/Postagem/Publicar.cshtml" class="fas fa-camera fa-lg" style="text-decoration:none; color:white"></a></div>*@
 
     @foreach (var item in Model)
     {
@@ -57,24 +59,29 @@
                 @using (Html.BeginForm("Comentar", "Mensagem", new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }, FormMethod.Post, new { @id = "comment-form", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="Enviar" style="background-color: #2A5594; color: white; border-color: #2A5594"/>
+                    <input type="submit" value="Enviar" style="background-color: #2A5594; color: white; border-color: #2A5594" />
                 }
             </div>
         </div>
 
         @*<div class="" style="margin: 10px 20px 10px 20px;">
-            <p>
-                Faça um comentário sobre a postagem:
-            </p>
+                <p>
+                    Faça um comentário sobre a postagem:
+                </p>
 
-            @using (Html.BeginForm("Comentar", "Mensagem", new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }, FormMethod.Post, new { @id = "comment-form", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <input type="submit" value="Enviar" />
-            }
-        </div>*@
+                @using (Html.BeginForm("Comentar", "Mensagem", new { UserID = ViewBag.UserID, PostID = item.ID, Descricao = "teste", Data = DateTime.Now.ToString() }, FormMethod.Post, new { @id = "comment-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Enviar" />
+                }
+            </div>*@
         <hr style="color:#FD9448; height:2px">
     }
 
+    <footer style="background-color: #2A5594; height: 50px">
+        <div style="display: inline-block; margin-top:15px; margin-left: 48%"><a href="~/Home/Feed?UserID=1" class="fas fa-home fa-lg" style="text-decoration:none; color:white"></a></div>
+        <div style="display: inline-block; margin-top: 15px"><a href="~/Postagem/Publicar?UserID=1" class="fas fa-camera fa-lg" style="text-decoration:none; color:white"></a></div>
+        <div style="display: inline-block; margin-top: 15px"><a href="~/Home/Perfil?UserID=1" class="fas fa-user fa-lg" style="text-decoration:none; color:white"></a></div>
+    </footer>
 </body>
 </html>
