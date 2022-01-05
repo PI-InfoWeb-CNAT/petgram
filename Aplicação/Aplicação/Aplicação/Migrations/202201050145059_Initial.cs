@@ -15,10 +15,11 @@ namespace Aplicação.Migrations
             DropIndex("dbo.Mensagem", new[] { "Postagem_ID" });
             DropIndex("dbo.Mensagem", new[] { "Usuario_ID" });
             DropIndex("dbo.Pet", new[] { "Owner_ID" });
-            DropTable("dbo.Postagem");
+            //DropTable("dbo.Postagem");
             DropTable("dbo.Mensagem");
-            DropTable("dbo.Usuario");
-            //DropTable("dbo.Pet");
+            //DropTable("dbo.Usuario");
+            DropTable("dbo.Pet");
+
 
             CreateTable(
                 "dbo.Pet",
@@ -35,7 +36,7 @@ namespace Aplicação.Migrations
                 .ForeignKey("dbo.Usuario", t => t.Owner_ID)
                 .Index(t => t.Owner_ID);
             
-            CreateTable(
+            /*CreateTable(
                 "dbo.Usuario",
                 c => new
                     {
@@ -48,7 +49,7 @@ namespace Aplicação.Migrations
                         Senha = c.String(nullable: false),
                         ConfirmaSenha = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID);*/
             
             CreateTable(
                 "dbo.Mensagem",
