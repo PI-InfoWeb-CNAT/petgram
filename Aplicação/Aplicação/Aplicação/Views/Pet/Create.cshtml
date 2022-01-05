@@ -25,6 +25,15 @@
         #titulo_cadastro {
             text-align: center;
         }
+
+        #botaofeed {
+            text-decoration: none;
+            text-align: center;
+            background-color: #2A5594;
+            color: white;
+            border-color: #2A5594;
+            margin-top: 10%;
+        }
     </style>
 </head>
 <body>
@@ -37,8 +46,8 @@
     @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-
         <div class="form-horizontal">
+
             <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -75,7 +84,7 @@
             <div class="text-white text-center">@ViewBag.new_pet</div>
 
             <h4 class='text-center' style="margin-top:8%; color:white;">Pets Criados</h4>
-            <table class="table" class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
+            <table class="table col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
                 <thead style="position:absolute">
                     <tr>
                         <th scope="col" style="color:white">Nome do pet</th>
@@ -84,7 +93,7 @@
                         <th scope="col" style="color:white"></th>
                     </tr>
                 </thead>
-                <tbody style="position: relative; top: 30px; color: white;">
+                <tbody style="position: fixed; top: 30px; color: white;">
                     @foreach (var pet in @ViewBag.Pets)
                     {
                         <tr>
@@ -108,18 +117,18 @@
                     }
                 </tbody>
             </table>
-           @*<div class="form-group" style="text-decoration: none; text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">
-                <div>
-                    @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, null)
+            <div class="form-group">
+                <div style="text-align: center">
+                    @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, new { @id = "botaofeed", @class = "btn btn-default" })
                 </div>
-            </div>*@
-           <a href='@Url.Action("Feed", "Home", new { UserID = ViewBag.UserID })'>
-               <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Seja um Petgrammer!</button>
-           </a>
+            </div>
+            @*<a href='@Url.Action("Feed", "Home", new { UserID = ViewBag.UserID })'>
+                    <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Seja um Petgrammer!</button>
+                </a>*@
             @*<a href="~/Views/Home/Feed.cshtml">
-                <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Meu Botão</button>
-            </a>*@
+                    <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Meu Botão</button>
+                </a>*@
         </div>
-    }
-</body>
+        }
+    </body>
 </html>
