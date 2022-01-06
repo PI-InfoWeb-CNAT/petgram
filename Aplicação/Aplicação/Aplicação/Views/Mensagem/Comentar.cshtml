@@ -28,7 +28,9 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div style="display: inline-block; margin-left: 1%;"><a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-arrow-left" style="text-decoration:none; color:white"></a></div>
+        <div style="display: inline-block; margin-left: 1%;">
+            <a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-arrow-left" style="text-decoration:none; color:white"></a>
+        </div>
         <div style="display:inline-block"><h4 style="color:white">Comentários:</h4></div>
         <div class="form-horizontal" style=" margin-left: 25%; margin-right: 25%; width: 50%;">
             <hr style="color:#FD9448; height:2px">

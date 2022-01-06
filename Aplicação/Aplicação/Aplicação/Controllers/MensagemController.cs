@@ -17,6 +17,7 @@ namespace Aplicação.Controllers
         public ActionResult Comentar(int UserID, int PostID)
         {
             ViewBag.Comments = mensagemDAL.GetCommentsByPostID(PostID);
+            ViewBag.UserID = UserID;
             return View();
         }
 
