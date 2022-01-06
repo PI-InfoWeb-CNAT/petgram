@@ -39,6 +39,14 @@
             margin-top: 1%;
             width: 500px;
         }
+
+        #botaoexcluir {
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            margin-top: 1%;
+            width: 500px;
+        }
     </style>
     <script src="https://kit.fontawesome.com/d17ae299ca.js" crossorigin="anonymous"></script>
 </head>
@@ -146,6 +154,14 @@
         <div style="text-align: center">
             @Html.ActionLink("Editar perfil", "EditarPerfil", "Home", new { UserID = ViewBag.UserID }, new { @id = "botaoeditar", @class = "btn btn-default" })
         </div>
+
+        <div style="text-align: center">
+            @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Excluir conta" id = "botaoexcluir" class = "btn btn-danger"/>
+            }
+        </div>
     </div>
     <br />
 
@@ -214,18 +230,6 @@
         </div>
 
     }
-
-    @*<p>
-            @Html.ActionLink("Ir para o feed", "Feed", new { UserID = Model.ID })
-        </p>*@
-
-    @*<p>
-            @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <input type="submit" value="Excluir conta" />
-            }
-        </p>*@
 
     <footer style="background-color: #2A5594; height: 50px">
         <div style="display: inline-block; margin-top:15px; margin-left: 48%"><a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-home fa-lg" style="text-decoration:none; color:white"></a></div>
