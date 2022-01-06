@@ -21,10 +21,34 @@ namespace Aplicação.Controllers
         // POST: Cadastro
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Usuario usuario)
+        public ActionResult Create(Usuario usuario, HttpPostedFileBase imagem = null)
         {
+            if (imagem != null)
+            {
+                usuario.ImagemMimeType = imagem.ContentType;
+                usuario.Imagem = SetImagemUser(imagem);
+                usuario.NomeArquivo = imagem.FileName;
+                usuario.TamanhoArquivo = imagem.ContentLength;
+            }
             usuarioDAL.GravarUsuario(usuario);
             return RedirectToAction("../Pet/Create", new { UserID = usuario.ID, new_pet = false });
+        }
+
+        private byte[] SetImagemUser(HttpPostedFileBase imagem)
+        {
+            var bytesImagem = new byte[imagem.ContentLength];
+            imagem.InputStream.Read(bytesImagem, 0, imagem.ContentLength);
+            return bytesImagem;
+        }
+
+        public FileContentResult GetImagemUser(long id)
+        {
+            Usuario usuario = usuarioDAL.ObterUsuarioPorId(id);
+            if (usuario != null && usuario.Imagem != null)
+            {
+                return File(usuario.Imagem, usuario.ImagemMimeType);
+            }
+            return null;
         }
     }
 }

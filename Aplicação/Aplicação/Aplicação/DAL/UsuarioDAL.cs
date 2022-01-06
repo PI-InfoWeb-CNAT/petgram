@@ -40,6 +40,10 @@ namespace Aplicação.DAL
             return user;
         }
 
+        public Usuario ObterUsuarioPorId(long id)
+        {
+            return context.Usuarios.Where(u => u.ID == id).First();
+        }
 
     }
 }

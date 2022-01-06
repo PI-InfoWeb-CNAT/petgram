@@ -36,15 +36,27 @@ namespace Aplicação.Controllers
 
         //POST: Editar Perfil
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditarPerfil(Usuario usuario)
+        public ActionResult EditarPerfil(Usuario usuario, HttpPostedFileBase imagem, string chkRemoverImagem)
         {
             if (ModelState.IsValid)
             {
+                if (chkRemoverImagem != null)
+                {
+                    usuario.Imagem = null;
+                }
+                if (imagem != null)
+                {
+                    usuario.ImagemMimeType = imagem.ContentType;
+                    usuario.Imagem = SetImagemUser(imagem);
+                    usuario.NomeArquivo = imagem.FileName;
+                    usuario.TamanhoArquivo = imagem.ContentLength;
+                }
                 userDAL.GravarUsuario(usuario);
                 return RedirectToAction("Perfil", new { UserID = usuario.ID });
             }
+
             return View(usuario);
+
             
         }
 
@@ -73,6 +85,11 @@ namespace Aplicação.Controllers
             return View(postDAL.ObterPostagensClassificadasPorData());
         }
 
-
+        private byte[] SetImagemUser(HttpPostedFileBase imagem)
+        {
+            var bytesImagem = new byte[imagem.ContentLength];
+            imagem.InputStream.Read(bytesImagem, 0, imagem.ContentLength);
+            return bytesImagem;
+        }
     }
 }
