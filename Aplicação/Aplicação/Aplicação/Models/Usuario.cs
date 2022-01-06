@@ -39,7 +39,10 @@ namespace Aplicação.Models
         [DisplayName("Confirmar senha")]
         [DataType(DataType.Password)]
         public string ConfirmaSenha { get; set; }
-
+        public string ImagemMimeType { get; set; }
+        public byte[] Imagem { get; set; }
+        public string NomeArquivo { get; set; }
+        public long TamanhoArquivo { get; set; }
         public virtual ICollection<Pet> Pets { get; set; }
 
         public virtual ICollection<Postagem> Postagens { get; set; }
