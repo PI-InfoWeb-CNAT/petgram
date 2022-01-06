@@ -38,7 +38,7 @@
             </div>
             <i class="fas fa-arrow-left"></i>*@
 
-        <div style="display: inline-block; margin-left: 1%;"><a href="~/Home/Feed?UserID=1" class="fas fa-arrow-left" style="text-decoration:none; color:white"></a></div>
+        <div style="display: inline-block; margin-left: 1%;"><a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-arrow-left" style="text-decoration:none; color:white"></a></div>
         <div style="display:inline-block"><h4 style="color:white">Nova publicação</h4></div>
 
         <br />
