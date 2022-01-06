@@ -28,7 +28,8 @@
             background-color: #2A5594;
             color: white;
             border-color: #2A5594;
-            margin-top: 10%;
+            margin-top: 40%;
+            width: 200px;
         }
     </style>
 </head>
@@ -42,13 +43,13 @@
     @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        <div class="form-horizontal">
+        <div class="form-horizontal" style=" margin-left: 40%; margin-right: 40%; width: 20%;">
 
             <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                <div style="display: flex; flex-direction: row; justify-content: center;">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
@@ -56,7 +57,7 @@
 
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
-                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                <div style="display: flex; flex-direction: row; justify-content: center;">
                     @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
                     @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
@@ -64,7 +65,7 @@
 
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                <div style="display: flex; flex-direction: row; justify-content: center;">
                     @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
@@ -78,33 +79,33 @@
                 </div>
             </div>
             <div class="text-white text-center">@ViewBag.new_pet</div>
-
-            <h4 class='text-center' style="margin-top:8%; color:white;">Pets Criados</h4>
-            <table class="table col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
+            <br /><br />
+            <h4 class='text-center' style="margin-top:5%; color:white;">Pets Criados</h4>
+            <table class="table" class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
                 <thead style="position:absolute">
                     <tr>
                         <th scope="col" style="color:white">Nome do pet</th>
                         <th scope="col" style="color:white">Categoria</th>
-                        <th scope="col" style="color:white"></th>
-                        <th scope="col" style="color:white"></th>
+                        @*<th scope="col" style="color:white"></th>
+                        <th scope="col" style="color:white"></th>*@
                     </tr>
                 </thead>
-                <tbody style="position: fixed; top: 30px; color: white;">
+                <tbody style="position: relative; top: 30px; color: white;">
                     @foreach (var pet in @ViewBag.Pets)
-                    {
+                     {
                         <tr>
-                            <td style="color:white">@pet.Name</td>
-                            <td style="color:white">@pet.Category</td>
-                            <td>
-                                <p>
-                                    <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
+                            <td style = "color:white" > @pet.Name </td>
+                                <td style = "color:white" > @pet.Category </td>
+                                <td>
+                                    <p>
+                                        <a href = "/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
                                         <span class="glyphicon glyphicon-pencil"></span> Editar
                                     </a>
                                 </p>
                             </td>
                             <td>
                                 <p>
-                                    <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
+                                    <a href = "/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
                                         <span class="glyphicon glyphicon-trash"></span> Deletar
                                     </a>
                                 </p>

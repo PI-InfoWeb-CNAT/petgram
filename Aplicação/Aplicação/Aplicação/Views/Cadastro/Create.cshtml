@@ -18,7 +18,6 @@
             background-color: #EB7E2F;
      
         }
-
     </style>
 </head>
 <body>
@@ -35,15 +34,15 @@
         <div style=" margin-left: 40%; margin-right: 40%; width: 20%;">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="col-md-offset-7 col-md-5" style="margin-left:1%">
+            <h4 class='text-center' style="margin-top:40%; color:white;">Por gentileza, preencha os seus dados:</h4>
+            <div>
                 <div class="form-group">
-                    @Html.TextBox("imagem", "", new { type = "file" })
+                    @Html.TextBox("imagem", "", new { type = "file"})
                 </div>
             </div>
 
             <div class="form-group" style="color:white">
                 @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                <h4 class='text-center' style="margin-top:40%; color:white;">Por gentileza, preencha os seus dados:</h4>
                 <div style="margin-top:1%">
                     @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
                     @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
@@ -103,7 +102,7 @@
 
             <div class="form-group">
                 <div style="text-align:center">
-                    <input type="submit" value="Próximo" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+                    <input type="submit" value="Próximo" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; width:100px" />
                 </div>
             </div>
 
