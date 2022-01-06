@@ -16,9 +16,7 @@
     <style>
         body {
             background-color: #EB7E2F;
-     
         }
-
     </style>
 </head>
 <body>
@@ -32,8 +30,9 @@
     {
         @Html.AntiForgeryToken()
 
-            <div style=" margin-left: 40%; margin-right: 40%; width: 20%;">
+            <div class="form-horizontal" style="margin-left: 40%; margin-right: 40%; width: 20%;">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
 
                 <div class="form-group" style="color:white">
                     @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
@@ -96,7 +95,7 @@
                         <div style="text-align:center">
                             <input type="submit" value="Próximo" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
                         </div>
-                    </div>
+                </div>
 
 
             </div>

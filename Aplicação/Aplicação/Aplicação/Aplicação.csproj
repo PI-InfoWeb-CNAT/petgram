@@ -138,10 +138,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201041821404_Initial.cs" />
-    <Compile Include="Migrations\202201041821404_Initial.Designer.cs">
-      <DependentUpon>202201041821404_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorias.cs" />
     <Compile Include="Models\Mensagem.cs" />
