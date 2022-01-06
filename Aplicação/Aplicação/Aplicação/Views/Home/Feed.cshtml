@@ -45,7 +45,7 @@
     @foreach (var item in Model)
     {
         <div class="card col align-items-left" style="margin: 10px 25% 10px 25%; background-color: #EB7E2F; border-color: #EB7E2F">
-            <img class="img-thumbnail img-responsive" style="width: 90%; margin-left:5%; margin-right:5%" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
+            <img class="img-thumbnail img-responsive" style="margin-left:5%; margin-right:5%" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
 
 
             <div class="card-body" style="background-color: #EB7E2F; margin-left: 5%; margin-right: 5%; margin-top: 1%">
