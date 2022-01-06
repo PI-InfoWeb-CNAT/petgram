@@ -1,0 +1,130 @@
+﻿@model Aplicação.Models.Pet
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #EB7E2F;
+        }
+
+        #titulo_cadastro {
+            text-align: center;
+        }
+
+        #botaofeed {
+            text-decoration: none;
+            text-align: center;
+            background-color: #2A5594;
+            color: white;
+            border-color: #2A5594;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class='nav-brand' id='petgramlogo'>
+        <a href='/Home'>
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+        </a>
+    </div>
+
+    @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+
+            <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center;">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.UserID, new { UserID = ViewBag.UserID })
+
+            <div class="form-group">
+                <div style="text-align:center">
+                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+                </div>
+            </div>
+            <div class="text-white text-center">@ViewBag.new_pet</div>
+
+            <h4 class='text-center' style="margin-top:8%; color:white;">Pets Criados</h4>
+            <table class="table col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
+                <thead style="position:absolute">
+                    <tr>
+                        <th scope="col" style="color:white">Nome do pet</th>
+                        <th scope="col" style="color:white">Categoria</th>
+                        <th scope="col" style="color:white"></th>
+                        <th scope="col" style="color:white"></th>
+                    </tr>
+                </thead>
+                <tbody style="position: fixed; top: 30px; color: white;">
+                    @foreach (var pet in @ViewBag.Pets)
+                    {
+                        <tr>
+                            <td style="color:white">@pet.Name</td>
+                            <td style="color:white">@pet.Category</td>
+                            <td>
+                                <p>
+                                    <a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                                    </a>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-trash"></span> Deletar
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div style="text-align: center">
+                    @Html.ActionLink("Seja um Petgrammer!", "Feed", "Home", new { UserID = ViewBag.UserID }, new { @id = "botaofeed", @class = "btn btn-default" })
+                </div>
+            </div>
+            @*<a href='@Url.Action("Feed", "Home", new { UserID = ViewBag.UserID })'>
+                    <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Seja um Petgrammer!</button>
+                </a>*@
+            @*<a href="~/Views/Home/Feed.cshtml">
+                    <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Meu Botão</button>
+                </a>*@
+        </div>
+        }
+    </body>
+</html>
