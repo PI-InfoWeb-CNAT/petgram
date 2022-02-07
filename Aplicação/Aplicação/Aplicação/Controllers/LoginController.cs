@@ -29,11 +29,11 @@ namespace Aplicação.Controllers
                 {
                     return RedirectToAction("../Home/Feed", new { UserID = userWithThatEmail.ID });
                 }
-                return RedirectToAction("../SENHA_ERRADA");
+                return View();
             }
             catch
             {
-                return RedirectToAction("../EMAIL_ERRADO/");
+                return View();
             }
         }
 
