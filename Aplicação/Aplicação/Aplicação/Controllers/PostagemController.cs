@@ -11,6 +11,7 @@ namespace Aplicação.Controllers
     public class PostagemController : Controller
     {
         PostagemDAL postDAL = new PostagemDAL();
+        UsuarioDAL userDAL = new UsuarioDAL();
 
         private byte[] SetImagem(HttpPostedFileBase imagem)
         {
@@ -29,8 +30,6 @@ namespace Aplicação.Controllers
             return null;
         }
 
-
-
         // GET: Publicar
         public ActionResult Publicar(int UserID)
         {
@@ -44,28 +43,22 @@ namespace Aplicação.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Publicar(Postagem post, HttpPostedFileBase imagem = null)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (imagem != null)
                 {
-                    if (imagem != null)
-                    {
-                        post.ImagemMimeType = imagem.ContentType;
-                        post.Imagem = SetImagem(imagem);
-                        post.NomeArquivo = imagem.FileName;
-                        post.TamanhoArquivo = imagem.ContentLength;
-                    }
-
-                    postDAL.GravarPost(post);
-                    return RedirectToAction("../Home/Feed", new { UserID = post.UserID });
+                    post.ImagemMimeType = imagem.ContentType;
+                    post.Imagem = SetImagem(imagem);
+                    post.NomeArquivo = imagem.FileName;
+                    post.TamanhoArquivo = imagem.ContentLength;
                 }
 
-                return View(post);
+                postDAL.GravarPost(post);
+                return RedirectToAction("../Home/Feed", new { UserID = post.UserID });
             }
-            catch
-            {
-                return View(post);
-            }
+
+            return View(post);
+
         }
 
         // POST: Deletar Postagem
@@ -73,22 +66,15 @@ namespace Aplicação.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletarPostagem(long postID, long userID)
         {
-            try
-            {
-                Postagem post = postDAL.EliminarPostagemPorId(postID);
-                TempData["Message"] = "Postagem excluída com sucesso!";
-                return RedirectToAction("../Home/Perfil", new { UserID = userID });
-            }
-            catch
-            {
-                return RedirectToAction("../Home/Perfil", new { UserID = userID });
-            }
+            Postagem post = postDAL.EliminarPostagemPorId(postID);
+            TempData["Message"] = "Postagem excluída com sucesso!";
+            return RedirectToAction("../Home/Perfil", new { UserID = userID });
         }
 
         // GET: Like
-        public void Like(long postID)
+        public long? Like(long postID)
         {
-            postDAL.RegistrarLike(postID);
+            return postDAL.RegistrarLike(postID);
         }
     }
 }

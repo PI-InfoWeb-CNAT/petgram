@@ -134,11 +134,13 @@
             @Html.HiddenFor(model => model.ImagemMimeType)
             @Html.HiddenFor(model => model.Imagem)
             @Html.HiddenFor(model => model.Likes)
+            @Html.HiddenFor(model => model.User)
 
             @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(model => model.Likes, "", new { @class = "text-danger" })
             @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
 
             <div class="form-group">
                 <div style="text-align:center">

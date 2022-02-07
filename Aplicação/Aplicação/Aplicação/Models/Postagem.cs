@@ -27,5 +27,6 @@ namespace Aplicação.Models
             Privado,
             Apenas_amigos
         }
+        public Usuario User { get; set; }
     }
 }
