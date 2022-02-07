@@ -20,6 +20,11 @@
             background-color: #EB7E2F;
         }
 
+        .my-image {
+            height: 40px;
+            width: 40px;
+        }
+
         .social-avatar {
             padding: 15px 15px 0 15px;
         }
@@ -66,7 +71,7 @@
             </div>*@
         <dl class="dl-horizontal" style="margin-left: 1%; color: white;">
 
-            <img class="img-thumbnail img-responsive" src="@Url.Action("GetImagemUser", "Cadastro", new { id = Model.ID })" />
+            <img class="img-thumbnail img-responsive my-image" src="@Url.Action("GetImagemUser", "Cadastro", new { id = Model.ID })" />
 
             <dt>
                 @*Html.DisplayNameFor(model => model.User)*@

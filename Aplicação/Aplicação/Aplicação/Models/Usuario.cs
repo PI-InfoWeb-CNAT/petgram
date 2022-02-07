@@ -32,7 +32,7 @@ namespace Aplicação.Models
         [Required(ErrorMessage = "Por favor, insira uma senha válida.")]
         [DisplayName("Senha")]
         [DataType(DataType.Password)]
-        [Compare("ConfirmaSenha", ErrorMessage = "As senhas não coincidem.")]
+        [Compare("ConfirmaSenha", ErrorMessage = "Email ou senha incorretos.")]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Por favor, confirme sua senha.")]

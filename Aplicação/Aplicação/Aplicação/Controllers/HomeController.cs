@@ -65,16 +65,17 @@ namespace Aplicação.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletarUsuario(long id)
         {
-            try
-            {
+            
                 Usuario user = userDAL.EliminarUsuarioPorId(id);
                 TempData["Message"] = "Usuário " + user.Nome.ToUpper() + " foi removido";
                 return RedirectToAction("../Cadastro/Create");
+            /*try
+            { 
             }
             catch
             {
                 return RedirectToAction("Perfil", new { UserID = id });
-            }
+            }*/
         }
 
 
