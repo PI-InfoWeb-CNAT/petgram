@@ -23,7 +23,6 @@ namespace Aplicação.DAL
 
         public Usuario GetUserByID(long id)
         {
-            //return context.Usuarios.Where(u => u.ID == id).Include("Pets").Include("Postagens").First();
             return context.Usuarios.Where(u => u.ID == id).Include("Pets").Include("Postagens").Include("Comentarios").First();
         }
 

@@ -28,7 +28,7 @@ namespace Aplicação.DAL
 
         public Postagem ObterPostagemPorId(long id)
         {
-            return context.Postagens.Where(p => p.ID == id).First();
+            return context.Postagens.Where(p => p.ID == id).Include("Comentarios").First();
         }
 
         public Postagem EliminarPostagemPorId(long id)
