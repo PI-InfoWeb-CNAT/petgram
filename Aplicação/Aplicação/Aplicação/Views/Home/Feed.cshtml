@@ -14,6 +14,9 @@
     <style>
         body {
             background-color: #EB7E2F;
+            height: 100px;
+            margin: 0;
+            min-height: 100%;
         }
         #botaocomentar {
             text-align:center;
@@ -21,6 +24,16 @@
             color: white;
             border-color: #2A5594;
             margin-left: 5%
+        }
+
+        .content-inside {
+            padding: 20px;
+            padding-bottom: 50px;
+        }
+
+        .footer {
+            height: 50px;
+            margin-top: -50px;
         }
     </style>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
@@ -54,7 +67,7 @@
 
     @foreach (var item in Model)
     {
-<div class="card col align-items-left" style="margin: 10px 25% 10px 25%; background-color: #EB7E2F; border-color: #EB7E2F">
+<div class="card col align-items-left" class="content-inside" style="margin-left: 15%; margin-right: 15%; width: 70%; background-color: #EB7E2F; border-color: #EB7E2F">
 
     <a href="@Url.Action("Perfil", "Home", new { UserId = ViewBag.UserID })" style="text-decoration:none">
         <div class="social-avatar" style="margin-left:1%">

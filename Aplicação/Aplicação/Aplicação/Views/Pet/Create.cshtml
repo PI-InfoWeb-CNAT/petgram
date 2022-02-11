@@ -32,24 +32,28 @@
             width: 200px;
         }
     </style>
+
+
+
 </head>
 <body>
-    <div class='nav-brand' id='petgramlogo'>
+    <div class='nav-brand'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:20%; height:20%; margin-left:40%; margin-right:40%">
         </a>
     </div>
 
     @using (Html.BeginForm("Create", "Pet", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        <div class="form-horizontal" style=" margin-left: 40%; margin-right: 40%; width: 20%;">
+        <div class="form-horizontal" style="margin-left: 25%; margin-right: 25%; width: 50%">
 
             <h4 class='text-center' style="margin-top:10%; color:white;">Por gentileza, preencha os dados de seu PET:</h4>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div style="display: flex; flex-direction: row; justify-content: center;">
+                <div style="margin-top:1%">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
@@ -57,7 +61,7 @@
 
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2"})*@
-                <div style="display: flex; flex-direction: row; justify-content: center;">
+                <div>
                     @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control", @placeholder = "Categoria" } })
                     @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
@@ -65,7 +69,7 @@
 
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                <div style="display: flex; flex-direction: row; justify-content: center;">
+                <div>
                     @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre ele (opcional)" } })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
@@ -75,41 +79,35 @@
 
             <div class="form-group">
                 <div style="text-align:center">
-                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594" />
+                    <input type="submit" value="Adicionar PET" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; width: 200px" />
                 </div>
             </div>
+
+
             <div class="text-white text-center">@ViewBag.new_pet</div>
+
+
             <br /><br />
+
             <h4 class='text-center' style="margin-top:5%; color:white;">Pets Criados</h4>
-            <table class="table" class="col-md-offset-5 col-md-2" style="display: flex; flex-direction: row; justify-content: center; border: 1px">
-                <thead style="position:absolute">
-                    <tr>
-                        <th scope="col" style="color:white">Nome do pet</th>
-                        <th scope="col" style="color:white">Categoria</th>
+
+            <table class="table">
+                <thead>
+                    <tr style="border: 5px; color:white">
+                        <th scope="col" style="color:white"><h5>Nome do pet</h5></th>
+                        <th scope="col" style="color:white"><h5>Categoria</h5></th>
                         @*<th scope="col" style="color:white"></th>
-                        <th scope="col" style="color:white"></th>*@
+                            <th scope="col" style="color:white"></th>*@
                     </tr>
                 </thead>
-                <tbody style="position: relative; top: 30px; color: white;">
+                <tbody>
                     @foreach (var pet in @ViewBag.Pets)
-                     {
-                        <tr>
-                            <td style = "color:white" > @pet.Name </td>
-                                <td style = "color:white" > @pet.Category </td>
-                                <td>
-                                    <p>
-                                        <a href = "/Pet/Edit/@pet.ID" class="btn btn-info btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span> Editar
-                                    </a>
-                                </p>
-                            </td>
-                            <td>
-                                <p>
-                                    <a href = "/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-trash"></span> Deletar
-                                    </a>
-                                </p>
-                            </td>
+                    {
+                        <tr style="border: 5px; color:white">
+                            <td style="color:white"><h5>@pet.Name</h5></td>
+                            <td style="color:white"><h5>@pet.Category</h5></td>
+                            <td style="color:white"><a href="/Pet/Edit/@pet.ID" class="btn btn-info btn-sm" style="background-color:white; border-color:white"><span class="glyphicon glyphicon-pencil" style="color: #EB7E2F"></span></a></td>
+                            <td style="color:white"><a href="/Pet/Delete/@pet.ID" class="btn btn-danger btn-sm" style="background-color: white; border-color: white "><span class="glyphicon glyphicon-trash" style="color: #EB7E2F"></span></a></td>
                         </tr>
                     }
                 </tbody>
@@ -126,6 +124,6 @@
                     <button style="text-align:center; background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 10%">Meu Botão</button>
                 </a>*@
         </div>
-        }
-    </body>
+    }
+</body>
 </html>
