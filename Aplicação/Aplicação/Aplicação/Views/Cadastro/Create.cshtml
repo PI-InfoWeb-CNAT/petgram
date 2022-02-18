@@ -17,6 +17,22 @@
         body {
             background-color: #EB7E2F;
         }
+        .form-group input {
+            background-color: #EB7E2F;
+            border: 2px solid #2A5594;
+            color: white !important;
+        }
+        .form-group input::placeholder {
+            color: white;
+        }
+        .form-group input:focus {
+            background-color: #EB7E2F;
+            border: 1px solid #2A5594;
+            color: white;
+        }
+        span.field-validation-valid{
+            color: white !important;
+        }
     </style>
 </head>
 <body>
@@ -33,12 +49,12 @@
         <div style="margin-left: 25%; margin-right: 25%; width: 50%">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <h4 class='text-center' style="margin-top:20%; color:white; text-align:center">Por gentileza, preencha os seus dados:</h4>
+            @*<h4 class='text-center' style="margin-top:20%; color:white; text-align:center">Por gentileza, preencha os seus dados:</h4>
             <div>
                 <div class="form-group">
                     @Html.TextBox("imagem", "", new { type = "file"})
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group" style="color:white">
                 @*@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-5" })*@
@@ -93,6 +109,11 @@
                 <div>
                     @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale um pouco sobre você" } })
                     @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    @Html.TextBox("imagem", "", new { type = "file"})
                 </div>
             </div>
 
