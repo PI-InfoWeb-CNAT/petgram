@@ -50,13 +50,15 @@
                 </div>
             </div>
         </div>
+
+        @Html.HiddenFor(model => model.User)
     }
     <hr style="color:#FD9448; height:2px">
     <ul class="comments">
         @foreach (var comment in @ViewBag.Comments)
         {
             <li class="list-item" style="list-style-type:none">
-                <div class="list-userID-item" style="color: white; margin-left: 1%">ID do Usuário: @comment.UserID</div>
+                <div class="list-userID-item" style="color: white; margin-left: 1%">@comment.User.Nome</div>
                 <div class="list-date-item small" style="color: white; margin-left: 1%">Data: @comment.Data.ToString("dd-MM-yyyy")</div>
                 <div class="list-comment-item" style="color: white; margin-left: 1%">Comentário: @comment.Descricao</div>
                 <hr style="color:#FD9448; height:2px">

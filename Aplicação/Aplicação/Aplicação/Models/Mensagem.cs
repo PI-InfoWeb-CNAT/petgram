@@ -16,5 +16,6 @@ namespace Aplicação.Models
         [DisplayName("Comentário")]
         public string Descricao { get; set; }
         public DateTime Data { get; set; }
+        public Usuario User { get; set; }
     }
 }
