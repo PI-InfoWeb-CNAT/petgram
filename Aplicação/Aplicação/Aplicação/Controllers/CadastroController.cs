@@ -23,15 +23,26 @@ namespace Aplicação.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuario usuario, HttpPostedFileBase imagem = null)
         {
-            if (imagem != null)
+            int idade = DateTime.Now.Subtract(usuario.Data_Nascimento).Days;
+            idade = idade / 365;
+
+            if (idade >= 14)
             {
-                usuario.ImagemMimeType = imagem.ContentType;
-                usuario.Imagem = SetImagemUser(imagem);
-                usuario.NomeArquivo = imagem.FileName;
-                usuario.TamanhoArquivo = imagem.ContentLength;
+                if (imagem != null)
+                {
+                    usuario.ImagemMimeType = imagem.ContentType;
+                    usuario.Imagem = SetImagemUser(imagem);
+                    usuario.NomeArquivo = imagem.FileName;
+                    usuario.TamanhoArquivo = imagem.ContentLength;
+                }
+                usuarioDAL.GravarUsuario(usuario);
+                return RedirectToAction("../Pet/Create", new { UserID = usuario.ID, new_pet = false });
             }
-            usuarioDAL.GravarUsuario(usuario);
-            return RedirectToAction("../Pet/Create", new { UserID = usuario.ID, new_pet = false });
+            else
+            {
+                ViewBag.VerificaIdade = "Sua idade deve ser maior ou igual a 14 anos";
+                return View(usuario);
+            }
         }
 
         private byte[] SetImagemUser(HttpPostedFileBase imagem)

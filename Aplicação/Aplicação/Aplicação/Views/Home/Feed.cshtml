@@ -83,7 +83,7 @@
 
             <a href="@Url.Action("Perfil", "Home", new { UserId = ViewBag.UserID })" style="text-decoration:none">
                 <div class="social-avatar" style="">
-                    <img class="img-thumbnail img-responsive my-image" style="height: 40px; width: 40px;" src="@Url.Action("GetImagemUser", "Cadastro", new { id = ViewBag.UserID })" />
+                    <img class="img-thumbnail img-responsive my-image" style="height: 40px; width: 40px;" src="@Url.Action("GetImagemUser", "Cadastro", new { id = item.UserID })" />
 
                     <h5 style="color: white; display: inline-block">@Html.DisplayFor(modelItem => item.User.Nome)</h5>
                     <!-- Nome do usuário da pessoa que postou ao lado da imagem -->

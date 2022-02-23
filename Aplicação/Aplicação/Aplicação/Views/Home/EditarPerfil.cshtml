@@ -32,14 +32,14 @@
     {
         
     <div class="form-horizontal" style=" margin-left: 40%; margin-right: 40%; width: 20%;">
-        @*Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
         @Html.HiddenFor(model => model.ImagemMimeType)
         @Html.HiddenFor(model => model.Imagem)
         @Html.HiddenFor(model => model.Data_Nascimento)
         @Html.HiddenFor(model => model.Email)
         @Html.HiddenFor(model => model.Senha)
-        @Html.HiddenFor(model => model.ConfirmaSenha)*@
+        @Html.HiddenFor(model => model.ConfirmaSenha)
 
         <div class="form-group">
             @if (Model.Imagem == null)
@@ -69,7 +69,6 @@
         <hr style="color:#FD9448; height:2px">
 
         <div class="form-group" style="color:white">
-            @*Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <h4 style="color:white">Nome</h4>
             <div class="form-group">
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
@@ -80,7 +79,6 @@
         <hr style="color:#FD9448; height:2px">
         
         <div class="form-group" style="color:white">
-            @*Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <h4 style="color:white;">Nome de usuário</h4>
             <div class="form-group">
                 @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
@@ -88,16 +86,8 @@
             </div>
         </div>
         <hr style="color:#FD9448; height:2px">
-        @*<div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.Data_Nascimento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="form-group">
-                @Html.EditorFor(model => model.Data_Nascimento, new { htmlAttributes = new { @class = "form-control", @placeholder = "Data de nascimento" } })
-                @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group" style="color:white">
-            @*Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <h4 style="color:white">Descrição</h4>
             <div class="form-group">
                 @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale-nos um pouco sobre você" } })
@@ -105,29 +95,6 @@
             </div>
         </div>
         <hr style="color:#FD9448; height:2px">
-        @*<div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="form-group">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="form-group">
-                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senha" } })
-                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.ConfirmaSenha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="form-group">
-                @Html.EditorFor(model => model.ConfirmaSenha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirme sua senha" } })
-                @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
             <div style="text-align:center">
@@ -149,8 +116,5 @@
     </div>
     }
     
-    @*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
 </body>
 </html>
