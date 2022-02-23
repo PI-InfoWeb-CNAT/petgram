@@ -15,42 +15,45 @@
         body {
             background-color: #EB7E2F;
         }
-        #comentarios {
-            width: 300px;
-            height: 300px
+        textarea {
+            border-color: #EB7E2F;
+            outline: 0;
+            border-width: 2px;
+        }
+        ul{
+            padding:0
         }
     </style>
     <script src="https://kit.fontawesome.com/d17ae299ca.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class='nav-brand'>
-        <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:40%; height:40%; margin-left:30%; margin-right:30%">
-        </a>
-    </div>
+    @*<div class='nav-brand'>
+            <a href='/Home'>
+                <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:40%; height:40%; margin-left:30%; margin-right:30%">
+            </a>
+        </div>*@
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div style="display: inline-block; margin-left: 1%;">
+        <div style="display: inline-block; margin-left: 1%; margin-top:5%">
             <a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-arrow-left" style="text-decoration:none; color:white"></a>
         </div>
         <div style="display:inline-block"><h4 style="color:white">Comentários</h4></div>
-        <hr style="color:#FD9448; height:4px">
-        <div class="form-horizontal">
+        <div class="form-horizontal" style="margin-top:5%">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group" style="text-align:center">
                 @*Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label" })*@
                 <div>
-                    @Html.TextAreaFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", id = "comentarios", @placeholder = "Comentário", cols = 35, @rows = 3 } })
+                    @Html.TextAreaFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control"} })
                     @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div style="text-align:center">
-                    <input type="submit" value="Enviar" class="btn btn-default" style="background-color: #2A5594; color: white; border-color: #2A5594; margin-top: 1%; text-align:center" />
+                    <input type="submit" value="Enviar" class="btn btn-default" style="background-color: #2A5594; color: white; border-color: #2A5594; text-align:center" />
                 </div>
             </div>
         </div>
@@ -58,16 +61,17 @@
         @Html.HiddenFor(model => model.User)
     }
     <hr style="color:#FD9448; height:4px">
-    <ul class="comments">
-        @foreach (var comment in @ViewBag.Comments)
-        {
+    @foreach (var comment in @ViewBag.Comments)
+    {
+        <ul class="comments">
             <li class="list-item" style="list-style-type:none">
-                <div class="list-Nome-item" style="color: white; margin-left: 1%; display: inline-block">@comment.User.Nome,</div>
-                <div class="list-date-item small" style="color: white; margin-left: 1%; display:inline-block">@comment.Data.ToString("dd-MM-yyyy")</div>
-                <div class="list-comment-item" style="color: white; margin-left: 1%"> @comment.Descricao</div>
-                <hr style="color:#FD9448; height:4px">
+                <div class="list-Nome-item" style="color: white; margin-left: 3%; display: inline-block; font-weight:bold">@comment.User.Nome,</div>
+                <div class="list-date-item small" style="color: white; margin-left: 1%; display: inline-block; font-weight: bold">@comment.Data.ToString("dd-MM-yyyy")</div>
+                <div class="list-comment-item" style="color: white; margin-left: 3%; margin-right:1%; word-wrap:break-word; width:auto "> @comment.Descricao</div>
             </li>
-        }
-    </ul>
-</body>
+            
+        </ul>
+        <hr style="color:#FD9448; height:4px">
+    }
+    </body>
 </html>

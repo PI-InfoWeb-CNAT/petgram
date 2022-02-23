@@ -16,6 +16,27 @@
         body {
             background-color: #EB7E2F;
         }
+
+        .form-group input {
+            background-color: #EB7E2F;
+            border: 2px solid #2A5594;
+            color: white !important;
+        }
+
+        .form-group input::placeholder {
+            color: white;
+        }
+
+        .form-group input:focus {
+            background-color: #EB7E2F;
+            border: 1px solid #2A5594;
+            color: white;
+        }
+
+        span.field-validation-valid{
+            color: white !important;
+        }
+
     </style>
 </head>
 <body>
@@ -31,7 +52,7 @@
     @using (Html.BeginForm("EditarPerfil", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         
-    <div class="form-horizontal" style=" margin-left: 40%; margin-right: 40%; width: 20%;">
+    <div style="margin-left: 25%; margin-right: 25%; width: 50%; margin-top: 15%">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
         @Html.HiddenFor(model => model.ImagemMimeType)
@@ -41,17 +62,17 @@
         @Html.HiddenFor(model => model.Senha)
         @Html.HiddenFor(model => model.ConfirmaSenha)
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom:0">
             @if (Model.Imagem == null)
             {
                 <div class="form-control-static">
-                    Nenhuma imagem adicionada
+                    <h5 style="color:white">Nenhuma imagem adicionada</h5>
                 </div>
             }
             else
             {
-                <div class="panel-footer">
-                    <div class="checkbox">
+                <div class="panel-footer" style="padding: 1px 1px 1px 1px; color: white; background-color: #EB7E2F; border-top: 0 ">
+                    <div class="checkbox" style="font-size: 12px; position: relative; display: block; background-color: #EB7E2F ">
                         <label>
                             <input type="checkbox" name="chkRemoverImagem" value="Sim">Remover imagem
                         </label>
@@ -60,56 +81,56 @@
             }
         </div>
 
-        <div style="margin-top:40%">
+        <div>
             <div class="form-group">
                 @Html.TextBox("imagem", "", new { type = "file" })
             </div>
         </div>
         
-        <hr style="color:#FD9448; height:2px">
+        <hr style="color: #FD9448; height: 4px">
 
-        <div class="form-group" style="color:white">
-            <h4 style="color:white">Nome</h4>
+        <h5 style="color:white">Nome</h5>
+        <div class="form-group">
             <div class="form-group">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
         
-        <hr style="color:#FD9448; height:2px">
-        
-        <div class="form-group" style="color:white">
-            <h4 style="color:white;">Nome de usuário</h4>
+        <hr style="color: #FD9448; height: 4px">
+
+        <h5 style="color:white">Nome de usuário</h5>
+        <div class="form-group">
             <div class="form-group">
-                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
             </div>
         </div>
-        <hr style="color:#FD9448; height:2px">
 
-        <div class="form-group" style="color:white">
-            <h4 style="color:white">Descrição</h4>
+        <hr style="color:#FD9448; height:4px">
+
+        <h5 style="color:white">Fale-nos um pouco sobre você</h5>
+        <div class="form-group">
             <div class="form-group">
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fale-nos um pouco sobre você" } })
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
         </div>
-        <hr style="color:#FD9448; height:2px">
 
         <div class="form-group">
             <div style="text-align:center">
-                <input type="submit" value="Salvar" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; width:100px" />
+                <input type="submit" value="Salvar" class="btn btn-default" style="background-color: #2A5594; color: white; border-color: #2A5594; width: 200px " />
             </div>
         </div>
-        <hr style="color:#FD9448; height:2px">
+        <hr style="color: #FD9448; height: 4px">
         <br /><br /><br />
         <p>
-            <h3 style="text-align:center; color:white">Deseja excluir sua conta?</h3>
+            <h5 style="text-align:center; color:white">Deseja excluir sua conta?</h5>
             <div style="text-align:center">
                 @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="Excluir" class="btn btn-default" style="background-color:#2A5594; color:white; border-color:#2A5594; width:100px" />
+                    <input type="submit" value="Excluir" class="btn btn-default" style="background-color: red; color: white; border-color: red; width: 200px" />
                 }
             </div>
         </p>

@@ -54,8 +54,7 @@
             background-color: #2A5594;
             color: white;
             border-color: #2A5594;
-            width: 200px;
-            height: 30px;
+            width: 30%
         }
 
         #botaoexcluir {
@@ -64,12 +63,22 @@
             color: white;
             background-color: red;
             border-color: red;
-            width: 200px;
-            height:30px;
+            width:30%
         }
 
         a{
             text-decoration:none
+        }
+
+        #fotoperfil{
+            margin-top: 2%;
+            width: 30%;
+            height: 30%;
+            margin-left: 35%;
+            margin-right: 35%
+        }
+        .fa-solid:before {
+            content: "\f015";
         }
     </style>
     <script src="https://kit.fontawesome.com/d17ae299ca.js" crossorigin="anonymous"></script>
@@ -87,11 +96,10 @@
     </div>
     <div>
         @*<div style="margin-left: 1%; color: white">
-                @Html.DisplayFor(model => model.User)
+                   @Html.DisplayFor(model => model.User)
             </div>*@
-
+        <img class="img-thumbnail img-responsive my-image" id="fotoperfil" src="@Url.Action("GetImagemUser", "Cadastro", new { id = Model.ID })" />
         <dl class="dl-horizontal" style="color: white; text-align:center">
-            <img class="img-thumbnail img-responsive my-image" src="@Url.Action("GetImagemUser", "Cadastro", new { id = Model.ID })" />
 
             <dt>
                 @*Html.DisplayNameFor(model => model.User)*@
@@ -112,11 +120,11 @@
 
 
             @*<dt>
-            @Html.DisplayNameFor(model => model.Data_Nascimento)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Data_Nascimento)
-        </dd>*@
+                    @Html.DisplayNameFor(model => model.Data_Nascimento)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Data_Nascimento)
+                </dd>*@
 
             <dt>
                 @*Html.DisplayNameFor(model => model.Descricao)*@
@@ -127,87 +135,75 @@
             </dd>
 
             @*<dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>*@
 
             @*<dt>
-            @Html.DisplayNameFor(model => model.Senha)
-        </dt>
+                    @Html.DisplayNameFor(model => model.Senha)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Senha)
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Senha)
+                </dd>*@
         </dl>
     </div>
     <hr style="color:#FD9448; height:4px">
 
     <h4 style="margin-left: 1%; color: white; text-align:center">Meus pets:</h4>
-       @foreach (var item in Model.Pets)
-        {
+    @foreach (var item in Model.Pets)
+    {
 
-            <dl style="margin-left:1%; color:white; text-align:center">
-                    <dt>
-                        @*Html.DisplayNameFor(modelItem => item.Name)*@
-                        Nome:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </dd>
-
-
-                    <dt>
-                        @*Html.DisplayNameFor(modelItem => item.Category)*@
-                        Categoria:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(modelItem => item.Category)
-                    </dd>
+        <dl style="margin-left:1%; color:white; text-align:center">
+            <dt>
+                @*Html.DisplayNameFor(modelItem => item.Name)*@
+                Nome:
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Name)
+            </dd>
 
 
-                    <dt>
-                        @*Html.DisplayNameFor(modelItem => item.Description)*@
-                        Descrição:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </dd>
-            </dl>
-             <hr style="color:#FD9448; height:4px">
-        }
+            <dt>
+                @*Html.DisplayNameFor(modelItem => item.Category)*@
+                Categoria:
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Category)
+            </dd>
+
+
+            <dt>
+                @*Html.DisplayNameFor(modelItem => item.Description)*@
+                Descrição:
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.Description)
+            </dd>
+        </dl>
+    }
+    <hr style="color:#FD9448; height:4px">
 
     @*Html.ActionLink("Editar perfil", "EditarPerfil", new { userID = ViewBag.UserID })*@
-    <div class="form-group">
-        <div style="text-align: center">
-            @Html.ActionLink("Editar perfil", "EditarPerfil", "Home", new { UserID = ViewBag.UserID }, new { @id = "botaoeditar", @class = "btn btn-default" })
-        </div>
-        <br />
-        <div style="text-align: center">
-            @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <input type="submit" value="Excluir conta" id="botaoexcluir" class="btn btn-danger" />
-            }
-        </div>
-    </div>
+
     <br />
 
     @foreach (var item in Model.Postagens)
     {
-        <div class="card col align-items-left" class="content-inside" style="margin-left: 15%; margin-right: 15%; width: 70%; background-color: #EB7E2F; border-color: #EB7E2F">
+        <div class="card col align-items-left" style="margin-left: 15%; margin-right: 15%; width: 70%; background-color: #EB7E2F; border-color: #EB7E2F">
 
-            <a href="@Url.Action("Perfil", "Home", new { UserId = ViewBag.UserID })" style="text-decoration:none">
-                <div class="social-avatar" style="">
-                    <img class="img-thumbnail img-responsive my-image" style="height: 40px; width: 40px;" src="@Url.Action("GetImagemUser", "Cadastro", new { id = ViewBag.UserID })" />
+            @*<a href="@Url.Action("Perfil", "Home", new { UserId = ViewBag.UserID })" style="text-decoration:none">
+                    <div class="social-avatar" style="">
+                        <img class="img-thumbnail img-responsive my-image" style="height: 40px; width: 40px;" src="@Url.Action("GetImagemUser", "Cadastro", new { id = ViewBag.UserID })" />
 
-                    <h5 style="color: white; display: inline-block">@Html.DisplayFor(modelItem => item.User.Nome)</h5>
-                    <!-- Nome do usuário da pessoa que postou ao lado da imagem -->
+                        <h5 style="color: white; display: inline-block">@Html.DisplayFor(modelItem => item.User.Nome)</h5>
+                        <!-- Nome do usuário da pessoa que postou ao lado da imagem -->
 
-                </div>
-            </a>
+                    </div>
+                </a>*@
 
             <img class="img-thumbnail img-responsive" style="margin-top:5px" src="@Url.Action("GetImagem", "Postagem", new { id = item.ID })" />
 
@@ -234,11 +230,27 @@
             </div>
             <h6 style="color: white">@Html.DisplayFor(modelItem => item.Descricao)</h6>
         </div>
+        <hr style="color:#FD9448; height:4px">
     }
+
+
+    <div class="form-group">
+        <div style="text-align: center">
+            @Html.ActionLink("Editar perfil", "EditarPerfil", "Home", new { UserID = ViewBag.UserID }, new { @id = "botaoeditar", @class = "btn btn-default" })
+        </div>
+        <div style="text-align: center; margin-top:1% ">
+            @using (Html.BeginForm("DeletarUsuario", "Home", new { id = ViewBag.UserID }, FormMethod.Post, new { @id = "delete-user-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Excluir conta" id="botaoexcluir" class="btn btn-danger" />
+            }
+        </div>
+    </div>
+
     <footer style="background-color: #2A5594; height: 50px">
         <div style="display: inline-block; margin-top: 15px"><a href="@Url.Action("Feed", "Home", new { UserId = ViewBag.UserID })" class="fas fa-home fa-lg" style="text-decoration:none; color:white"></a></div>
         <div style="display: inline-block; margin-top: 15px"><a href="@Url.Action("Publicar", "Postagem", new { UserId = ViewBag.UserID })" class="fas fa-camera fa-lg" style="text-decoration:none; color:white"></a></div>
-        <div style="display: inline-block; margin-top: 15px"><a href="@Url.Action("Perfil", "Home", new { UserId = ViewBag.UserID })" class="fas fa-user fa-lg" style="text-decoration:none; color:white"></a></div>
+        <div style="display: inline-block; margin-top: 15px"><a href="@Url.Action("Create", "Cadastro", new { UserId = ViewBag.UserID })" class="fas fa-door-open fa-lg" style="text-decoration:none; color:white"></a></div>
     </footer>
 </body>
 </html>
