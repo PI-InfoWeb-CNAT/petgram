@@ -7,18 +7,11 @@ namespace Aplicação.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Postagem", "UserID", "dbo.Usuario");
-            DropForeignKey("dbo.Mensagem", "Postagem_ID", "dbo.Postagem");
+           
             DropForeignKey("dbo.Pet", "Owner_ID", "dbo.Usuario");
-            DropForeignKey("dbo.Mensagem", "UserID", "dbo.Usuario");
-            DropIndex("dbo.Postagem", new[] { "UserID" });
             DropIndex("dbo.Pet", new[] { "Owner_ID" });
-            DropIndex("dbo.Mensagem", new[] { "Postagem_ID" });
-            DropIndex("dbo.Mensagem", new[] { "UserID" });
-            DropTable("dbo.Postagem");
             DropTable("dbo.Pet");
             DropTable("dbo.Usuario");
-            DropTable("dbo.Mensagem");
 
             CreateTable(
                 "dbo.Mensagem",

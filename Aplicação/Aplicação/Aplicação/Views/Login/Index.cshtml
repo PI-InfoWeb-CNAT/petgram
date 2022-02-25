@@ -17,13 +17,50 @@
         body {
             background-color: #EB7E2F;
         }
+        input {
+            background-color: #EB7E2F;
+        }
 
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus {
+                border: 1px solid #EB7E2F;
+                -webkit-text-fill-color: white;
+                -webkit-box-shadow: 0 0 0px 1000px #EB7E2F inset;
+                transition: background-color 5000s ease-in-out 0s;
+            }
+
+        .form-group input {
+            background-color: #EB7E2F;
+            border: 2px solid #2A5594;
+            color: white !important;
+        }
+
+            .form-group input::placeholder {
+                color: white;
+            }
+
+            .form-group input:focus {
+                background-color: #EB7E2F;
+                border: 1px solid #2A5594;
+                color: white;
+            }
+
+        span.field-validation-valid {
+            color: white !important;
+        }
+        #botaocadastro {
+            background-color: #2A5594;
+            color: white;
+            border-color: #2A5594;
+            width: 150px
+        }
     </style>
 </head>
 <body>
-    <div class='nav-brand' id='petgramlogo'>
+    <div class='nav-brand'>
         <a href='/Home'>
-            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:10%; height:8%; margin-left:45%; margin-right:45%">
+            <img src='https://github.com/PI-InfoWeb-CNAT/petgram/blob/login_sem_identity/images/logo_branca_petgram.png?raw=true' alt='Logo PetGram' style="width:40%; height:40%; margin-left:30%; margin-right:30%">
         </a>
     </div>
 
@@ -31,8 +68,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal" style=" margin-left: 25%; margin-right: 25%; width: 50%">
-            <h4 style="margin-top:10%; color:white; text-align:center">Por gentileza, preencha os seus dados:</h4>
+        <div style="margin-left: 25%; margin-right: 25%; width: 50%; margin-top: 15%">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
@@ -53,16 +89,15 @@
 
             <div class="form-group">
                 <div style="text-align:center">
-                    <input type="submit" value="Entrar" class="btn btn-default" style="background-color: #2A5594; color: white; border-color: #2A5594; width:200px" />
+                    <input type="submit" value="Entrar" class="btn btn-default" style="background-color: #2A5594; color: white; border-color: #2A5594; width:150px" />
                 </div>
+            </div>
+
+            <div style="text-align: center">
+                @Html.ActionLink("Cadastre-se", "Create", "Cadastro", null, new { @id = "botaocadastro", @class = "btn btn-default" })
             </div>
         </div>
     }
-
-
-    <div style="text-align: center">
-        @Html.ActionLink("Cadastre-se", "Create", "Cadastro", null, new { @id = "botaocadastro", @class = "btn btn-default", @style = "background-color: #2A5594; color: white; border-color: #2A5594; width:200px" })
-    </div>
 
 </body>
 </html>
