@@ -37,7 +37,7 @@ O projeto __Petgram__ tem como objetivo ser uma rede social específica para don
 
 Por se tratar de uma rede social, as tarefas executadas sobre o sistema são feitas pelos próprios membros ou visitantes da rede. As postagens podem ser feitas em qualquer horário e para isso o sistema deve ter a capacidade de estar habilitado a receber requições 24 horas por dia, durante os 7 dias da semana.
 
-Os locais para interação com o sistema são diversos e estes podem ter uma variação da qualdiade de sinal de internet, fato que pode limitar o acesso ao sistema. 
+Os locais para interação com o sistema são diversos e estes podem ter uma variação da qualidade de sinal de internet, fato que pode limitar o acesso ao sistema. 
 
 ### 5. Principais necessidades dos usuários
 Os Donos de Pets sentem falta de um ambiente apropriado para postagens de mídias sobre seus pets. Atualmente se tem usado alguns aplicativos de rede social como Facebook, Instagram, entre outros. Como este sistemas são de cunho generalista, seus participantes precisam criar grupos específicos que os identifiquem. Isso causa uma proliferação de grupos que termina prejudicando a comunicação entre a comunidade.
